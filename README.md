@@ -1,0 +1,2 @@
+# slackinspector
+SlackInspector
