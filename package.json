@@ -1,0 +1,17 @@
+{
+  "name": "slackinspector",
+  "description": "Analyzing messages from specific Slack channel via IBM Watson Tone Analyzer",
+  "license": "MIT",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "*",
+    "body-parser":  "*",
+    "compression": "*",
+    "bower": "*",
+    "watson-developer-cloud": "*",
+    "mongoose": "*"
+  },
+  "devDependencies": {
+    "morgan": "*"
+  }
+}
