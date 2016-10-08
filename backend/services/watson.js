@@ -1,5 +1,6 @@
 'use strict';
 
+var usageData = require('../services/usageData');
 var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
 
 var tone_analyzer = new ToneAnalyzerV3({
@@ -26,6 +27,9 @@ module.exports = {
                     return res.json({ ok: false, error: err });
                 }
                 else {
+                    if (saveUsageData) {
+                        usageData.storeTone(tone);
+                    }
                     return res.json({ ok: true, tone: tone });
                 }
             });
