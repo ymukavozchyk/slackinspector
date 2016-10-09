@@ -34,8 +34,41 @@ module.exports = function (app) {
             });
         });
 
+    router.route('/verify')
+        .post(function (req, res) {
+
+            if (req.body.encrypted_token === undefined) {
+                return res.json({ ok: false, error: 'encrypted token is undefined' });
+            }
+
+            var decryptedToken;
+            try {
+                decryptedToken = cryptography.decrypt(req.body.encrypted_token);
+            }
+            catch (error) {
+                return res.json({ ok: false, error: 'was not able to decrypt token' });
+            }
+
+            https.get({
+                host: 'slack.com',
+                path: '/api/auth.test?token=' + decryptedToken
+            }, function (response) {
+                var body = '';
+                response.on('data', function (d) {
+                    body += d;
+                });
+                response.on('end', function () {
+                    var parsed = JSON.parse(body);
+                    if (parsed.ok) {
+                        return res.json({ ok: true });
+                    }
+                    return res.json({ ok: false, error: parsed.error });
+                });
+            });
+        });
+
     router.route('/revoke')
-        .get(function (req, res) {
+        .post(function (req, res) {
 
             if (req.body.encrypted_token === undefined) {
                 return res.json({ ok: false, error: 'encrypted token is undefined' });
