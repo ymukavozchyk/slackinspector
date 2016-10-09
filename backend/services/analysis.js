@@ -8,12 +8,12 @@ module.exports = {
     setup: setupAnalysis
 };
 
-function setupAnalysis(saveUsageData, res) {
+function setupAnalysis(token, channel, saveUsageData, res) {
     var messages = [];
 
-    return function fetch(channel, fromTs, toTs) {
+    return function fetch(fromTs, toTs) {
 
-        var url = '/api/channels.history?token=' + global.__token + '&channel=' + channel + '&count=1000';
+        var url = '/api/channels.history?token=' + token + '&channel=' + channel + '&count=1000';
 
         if (toTs !== null) {
             url += '&latest=' + toTs;
@@ -68,7 +68,7 @@ function setupAnalysis(saveUsageData, res) {
                         else {
                             resToTs = parsed.messages.pop().ts;
                         }
-                        fetch(channel, resFromTs, resToTs);
+                        fetch(resFromTs, resToTs);
                     }
                     else {
                         //todo perform statistical analysis

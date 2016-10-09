@@ -9,75 +9,62 @@ module.exports = function (app) {
     router.route('/login')
         .post(function (req, res) {
 
-            if (req.body.code !== undefined) {
-                https.get({
-                    host: 'slack.com',
-                    path: '/api/oauth.access?client_id=' + process.env.SLACK_CLIENT_ID + '&client_secret=' + process.env.SLACK_CLIENT_SECRET + '&code=' + req.body.code
-                }, function (response) {
-                    var body = '';
-                    response.on('data', function (d) {
-                        body += d;
-                    });
-                    response.on('end', function () {
-                        var parsed = JSON.parse(body);
-                        if (parsed.ok) {
-                            global.__token = parsed.access_token;
-                            return res.json({
-                                ok: true,
-                                encrypted_token: cryptography.encrypt(parsed.access_token)
-                            });
-                        }
-                        return res.json({ ok: false, error: parsed.error });
-                    });
-                });
-            }
-            else {
+            if (req.body.code === undefined) {
                 return res.json({ ok: false, error: 'code is undefined' });
             }
-        });
 
-    router.route('/verify')
-        .post(function (req, res) {
-            try {
-                if (req.body.encrypted_token !== undefined) {
-                    global.__token = cryptography.decrypt(req.body.encrypted_token);
-                }
-                else {
-                    return res.json({ ok: false });
-                }
-            }
-            catch (error) {
-                return res.json({ ok: false });
-            }
-
-            return res.json({ ok: true });
+            https.get({
+                host: 'slack.com',
+                path: '/api/oauth.access?client_id=' + process.env.SLACK_CLIENT_ID + '&client_secret=' + process.env.SLACK_CLIENT_SECRET + '&code=' + req.body.code
+            }, function (response) {
+                var body = '';
+                response.on('data', function (d) {
+                    body += d;
+                });
+                response.on('end', function () {
+                    var parsed = JSON.parse(body);
+                    if (parsed.ok) {
+                        return res.json({
+                            ok: true,
+                            encrypted_token: cryptography.encrypt(parsed.access_token)
+                        });
+                    }
+                    return res.json({ ok: false, error: parsed.error });
+                });
+            });
         });
 
     router.route('/revoke')
         .get(function (req, res) {
 
-            if (global.__token !== undefined) {
-                https.get({
-                    host: 'slack.com',
-                    path: '/api/auth.revoke?token=' + global.__token
-                }, function (response) {
-                    var body = '';
-                    response.on('data', function (d) {
-                        body += d;
-                    });
-                    response.on('end', function () {
-                        var parsed = JSON.parse(body);
-                        if (parsed.ok) {
-                            global.__token = null;
-                            return res.json({ ok: true });
-                        }
-                        return res.json({ ok: false, error: parsed.error });
-                    });
+            if (req.body.encrypted_token === undefined) {
+                return res.json({ ok: false, error: 'encrypted token is undefined' });
+            }
+
+            var decryptedToken;
+            try {
+                decryptedToken = cryptography.decrypt(req.body.encrypted_token);
+            }
+            catch (error) {
+                return res.json({ ok: false, error: 'was not able to decrypt token' });
+            }
+
+            https.get({
+                host: 'slack.com',
+                path: '/api/auth.revoke?token=' + decryptedToken
+            }, function (response) {
+                var body = '';
+                response.on('data', function (d) {
+                    body += d;
                 });
-            }
-            else {
-                return res.json({ ok: false, error: 'token is undefined' });
-            }
+                response.on('end', function () {
+                    var parsed = JSON.parse(body);
+                    if (parsed.ok) {
+                        return res.json({ ok: true });
+                    }
+                    return res.json({ ok: false, error: parsed.error });
+                });
+            });
         });
 
     app.use('/api/auth', router);
