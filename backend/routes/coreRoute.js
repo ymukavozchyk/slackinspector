@@ -4,6 +4,7 @@ var express = require('express');
 var https = require('https');
 var analysis = require('../services/analysis');
 var cryptography = require('../services/cryptography');
+var usageData = require('../services/usageData');
 var router = express.Router();
 
 module.exports = function (app) {
@@ -90,6 +91,11 @@ module.exports = function (app) {
 
             var performAnalysis = analysis.setup(decryptedToken, req.body.channel, saveUsageData, res);
             performAnalysis(fromTs, toTs);
+        });
+
+    router.route('/usage/tone')
+        .get(function (req, res) {
+            usageData.toneAggregation(res);
         });
 
     app.use('/api/core', router);
