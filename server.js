@@ -20,6 +20,26 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 require('./backend/routes/authRoute')(app);
 require('./backend/routes/coreRoute')(app);
 
+app.get('/login', function (req, res) {
+    res.sendFile(__dirname + '/public/login.html');
+});
+
+app.get('/options', function (req, res) {
+    res.sendFile(__dirname + '/public/options.html');
+});
+
+app.get('/result', function (req, res) {
+    res.sendFile(__dirname + '/public/result.html');
+});
+
+app.get('/usage', function (req, res) {
+    res.sendFile(__dirname + '/public/usage.html');
+});
+
+app.get('/about', function (req, res) {
+    res.sendFile(__dirname + '/public/about.html');
+});
+
 app.get('*', function (req, res) {
     res.sendFile(__dirname + '/public/index.html');
 });
