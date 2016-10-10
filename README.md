@@ -12,11 +12,7 @@ A web application which performs an analysis of messages from specific [Slack](h
 * Watson Developer Cloud Node.js SDK
 
 **Client-side**
-* **Part 1 (DEV week)**
-    * HTML5
-    * CSS3
-    * JS (ES5)
-    * jQuery
+* [**Part 1 (DEV week)**](https://github.com/ymukavozchyk/slackinspector/tree/part-1)
 
 ----------
 **COMP 424 - Client-Side Web Design**  
