@@ -2,17 +2,69 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-    <title>SlackInspector - Analysis - Step 2</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
-    <meta name="description" content="Analyzing messages from specific Slack channel via IBM Watson Tone Analyzer">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+	<title>SlackInspector - Analysis - Step 2</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+	<meta name="description" content="Analyzing messages from specific Slack channel via IBM Watson Tone Analyzer">
+
+	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
 </head>
 
 <body>
-    <header>
-        <h1>SlackInspector - Analysis - Step 2</h1>
-    </header>
+	<header>
+		<a href="/usage">Usage Statistics</a>
+		<h1>SlackInspector</h1>
+		<button id="logOutButton">Log Out from Slack</button>
+	</header>
+
+	<main>
+		<section>
+			<h2>Analysis</h2>
+			<h3>Step 2 of 2</h3>
+			<h4>Select analysis options</h4>
+
+			<p><b id="selectedChannelName"></b></p>
+
+			<div>
+				<p><input type="radio" name="mode" value="1" checked> All messages</p>
+				<p><input type="radio" name="mode" value="2"> Messages within specific date and time range</p>
+				<p>
+					<label><input type="checkbox" id="fromCheck"> From</label>
+					<input type="date" id="fromDate">
+					<input type="time" id="fromTime">
+				</p>
+				<p>
+					<label><input type="checkbox" id="toCheck"> To</label>
+					<input type="date" id="toDate">
+					<input type="time" id="toTime">
+				</p>
+				<p>
+					<label>
+                        <input type="checkbox" id="dataUsageCheck" checked> Yes, you can use my anonymous analysis results for usage statistics.
+                        <a href="/about" target="_blank">More information</a>
+                    </label>
+				</p>
+			</div>
+
+			<button id="backButton">< Back</button>
+			<button id="performAnalysisButton">Perform Analysis</button>
+		</section>
+	</main>
+
+	<footer>
+		<p>
+			<a href="/about" target="_blank">About</a>
+			<a href="https://github.com/ymukavozchyk/slackinspector/tree/part-1" target="_blank">GitHub</a>
+		</p>
+		<p>
+			© 2016 SlackInspector
+		</p>
+	</footer>
+
+	<script type="text/javascript" src="assets/vendors/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="assets/js/services/utilities.js"></script>
+	<script type="text/javascript" src="assets/js/logic/options.js"></script>
 </body>
 
 </html>
