@@ -24,7 +24,7 @@ module.exports = {
         },
             function (err, tone) {
                 if (err) {
-                    return res.json({ ok: false, error: err });
+                    return res.status(500).json({ ok: false, error: err });
                 }
                 else {
                     if (saveUsageData) {

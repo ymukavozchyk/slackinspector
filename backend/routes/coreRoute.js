@@ -13,7 +13,7 @@ module.exports = function (app) {
         .post(function (req, res) {
 
             if (req.body.encrypted_token === undefined || req.body.encrypted_token === '') {
-                return res.json({ ok: false, error: 'encrypted token is undefined or empty' });
+                return res.status(400).json({ ok: false, error: 'encrypted token is undefined or empty' });
             }
 
             var decryptedToken;
@@ -21,7 +21,7 @@ module.exports = function (app) {
                 decryptedToken = cryptography.decrypt(req.body.encrypted_token);
             }
             catch (error) {
-                return res.json({ ok: false, error: 'was not able to decrypt token' });
+                return res.status(500).json({ ok: false, error: 'was not able to decrypt token' });
             }
 
             https.get({
@@ -45,7 +45,7 @@ module.exports = function (app) {
 
                         return res.json({ ok: true, channels: channels });
                     }
-                    return res.json({ ok: false, error: parsed.error });
+                    return res.status(500).json({ ok: false, error: parsed.error });
                 });
             });
         });
@@ -54,11 +54,11 @@ module.exports = function (app) {
         .post(function (req, res) {
 
             if (req.body.encrypted_token === undefined || req.body.encrypted_token === '') {
-                return res.json({ ok: false, error: 'encrypted token is undefined or empty' });
+                return res.status(400).json({ ok: false, error: 'encrypted token is undefined or empty' });
             }
 
             if (req.body.channel === undefined || req.body.channel === '') {
-                return res.json({ ok: false, error: 'channel is undefined or empty' });
+                return res.status(400).json({ ok: false, error: 'channel is undefined or empty' });
             }
 
             var decryptedToken;
@@ -66,7 +66,7 @@ module.exports = function (app) {
                 decryptedToken = cryptography.decrypt(req.body.encrypted_token);
             }
             catch (error) {
-                return res.json({ ok: false, error: 'was not able to decrypt token' });
+                return res.status(500).json({ ok: false, error: 'was not able to decrypt token' });
             }
 
             var fromTs = null;
@@ -78,7 +78,7 @@ module.exports = function (app) {
                     saveUsageData = req.body.save_usage_data;
                 }
                 else {
-                    return res.json({ ok: false, error: 'save_usage_data should be a valid boolean (true or false)' });
+                    return res.status(400).json({ ok: false, error: 'save_usage_data should be a valid boolean (true or false)' });
                 }
             }
 
