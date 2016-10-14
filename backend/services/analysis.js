@@ -76,7 +76,7 @@ function setupAnalysis(token, channel, saveUsageData, res) {
                     }
                 }
                 else {
-                    return res.json({ ok: false, error: parsed.error });
+                    return res.status(500).json({ ok: false, error: parsed.error });
                 }
             });
         });

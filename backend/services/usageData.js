@@ -35,8 +35,8 @@ function toneAggregation(res) {
         }
     ], function (err, aggregationResult) {
         if (err) {
-            return res.json({ ok: false, error: 'was not able to aggregate tone data' });
+            return res.status(500).json({ ok: false, error: 'was not able to aggregate tone data' });
         }
-        return res.json({ ok: false, result: aggregationResult });
+        return res.json({ ok: true, result: aggregationResult });
     });
 };
