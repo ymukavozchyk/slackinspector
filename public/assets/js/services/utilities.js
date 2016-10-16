@@ -16,3 +16,7 @@ function getParameterByName(name) {
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 };
+
+function Round2(value) {
+    return Math.round(value * 100) / 100;
+};

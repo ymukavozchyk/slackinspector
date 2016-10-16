@@ -2,17 +2,44 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-    <title>SlackInspector - Usage Statistics</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
-    <meta name="description" content="Analyzing messages from specific Slack channel via IBM Watson Tone Analyzer">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+	<title>SlackInspector - Usage Statistics</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+	<meta name="description" content="Analyzing messages from specific Slack channel via IBM Watson Tone Analyzer">
+
+	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
 </head>
 
 <body>
-    <header>
-        <h1>SlackInspector - Usage Statistics</h1>
-    </header>
+	<header>
+		<a href="/index">Perform Analysis</a>
+		<h1>SlackInspector</h1>
+		<button class="hidden" id="logOutButton">Log Out from Slack</button>
+	</header>
+
+	<main>
+		<section>
+			<h2>Usage Statistics</h2>
+			<h4>IBM Watson Tone Analysis Average Results</h4>
+
+			<div id="results" class="watson-results"></div>
+		</section>
+	</main>
+
+	<footer>
+		<p>
+			<a href="/about" target="_blank">About</a>
+			<a href="https://github.com/ymukavozchyk/slackinspector/tree/part-1" target="_blank">GitHub</a>
+		</p>
+		<p>
+			© 2016 SlackInspector
+		</p>
+	</footer>
+
+	<script type="text/javascript" src="assets/vendors/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="assets/js/services/utilities.js"></script>
+	<script type="text/javascript" src="assets/js/logic/usage.js"></script>
 </body>
 
 </html>

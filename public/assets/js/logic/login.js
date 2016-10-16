@@ -20,6 +20,7 @@ function checkForAuthCode() {
 function loginLogic() {
     if (checkToken()) {
         window.location.replace('index');
+        return;
     }
 
     checkForAuthCode();

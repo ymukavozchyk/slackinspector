@@ -36,7 +36,9 @@ function setDateTimeParameter(dateElementId, timeElementId, parameterName) {
     if (dateValue !== '') {
         var timeValue = $('#' + timeElementId).val();
         if (timeValue !== '') {
-            sessionStorage.setItem(parameterName, Date.parse(dateValue + ' ' + timeValue));
+            var dateStamp = Date.parse(dateValue + ' ' + timeValue);
+            var epochStamp = Math.round(dateStamp / 1000.0);
+            sessionStorage.setItem(parameterName, epochStamp);
             return undefined;
         }
         else {
@@ -56,20 +58,28 @@ function setAnalysisOptions() {
     var selectedMode = $('input[name=mode]:checked').val();
 
     if (selectedMode == 2) {
+
+        var atLeastOneParamterProvided = false;
+
         if ($('#fromCheck').is(":checked")) {
             var setParameterResult = setDateTimeParameter('fromDate', 'fromTime', 'option_from');
             if (typeof (setParameterResult) === 'string') {
                 alert('please set from ' + setParameterResult);
                 return;
             }
-        } else if ($('#toCheck').is(":checked")) {
+            atLeastOneParamterProvided = true;
+        }
+
+        if ($('#toCheck').is(":checked")) {
             var setParameterResult = setDateTimeParameter('toDate', 'toTime', 'option_to');
             if (typeof (setParameterResult) === 'string') {
                 alert('please set to ' + setParameterResult);
                 return;
             }
+            atLeastOneParamterProvided = true;
         }
-        else{
+
+        if (!atLeastOneParamterProvided) {
             alert('please select at least one date & time parameter');
             return;
         }
@@ -88,10 +98,12 @@ function setAnalysisOptions() {
 function optionsLogic() {
     if (!checkToken()) {
         window.location.replace('login');
+        return;
     }
 
     if (!checkStep1Options()) {
         window.location.replace('index');
+        return;
     }
 
     $('#logOutButton').click(logOut);

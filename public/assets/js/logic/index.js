@@ -59,6 +59,7 @@ function goToNextStep() {
 function indexLogic() {
     if (!checkToken()) {
         window.location.replace('login');
+        return;
     }
 
     $('#logOutButton').click(logOut);

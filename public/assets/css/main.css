@@ -1,3 +1,17 @@
 .hidden {
     display: none;
 }
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+.watson-results{
+    vertical-align: top;
+}
+.watson-results-element{
+    display: inline-table;
+}
