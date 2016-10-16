@@ -24,13 +24,13 @@ module.exports = {
         },
             function (err, tone) {
                 if (err) {
-                    return res.status(500).json({ ok: false, error: err });
+                    return res.status(500).json({ ok: false, error_type: 'watson', error: err });
                 }
                 else {
                     if (saveUsageData) {
                         usageData.storeTone(tone);
                     }
-                    return res.json({ ok: true, tone: tone });
+                    return res.json({ ok: true, message_count: messages.length, tone: tone });
                 }
             });
     }
