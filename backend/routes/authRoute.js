@@ -10,7 +10,7 @@ module.exports = function (app) {
         .post(function (req, res) {
 
             if (req.body.code === undefined) {
-                return res.status(400).json({ ok: false, error: 'code is undefined' });
+                return res.status(400).json({ ok: false, error_type: 'internal', error: 'code is undefined' });
             }
 
             https.get({
@@ -29,7 +29,7 @@ module.exports = function (app) {
                             encrypted_token: cryptography.encrypt(parsed.access_token)
                         });
                     }
-                    return res.status(500).json({ ok: false, error: parsed.error });
+                    return res.status(500).json({ ok: false, error_type: 'slack', error: parsed.error });
                 });
             });
         });
@@ -38,7 +38,7 @@ module.exports = function (app) {
         .post(function (req, res) {
 
             if (req.body.encrypted_token === undefined) {
-                return res.status(400).json({ ok: false, error: 'encrypted token is undefined' });
+                return res.status(400).json({ ok: false, error_type: 'internal', error: 'encrypted token is undefined' });
             }
 
             var decryptedToken;
@@ -46,7 +46,7 @@ module.exports = function (app) {
                 decryptedToken = cryptography.decrypt(req.body.encrypted_token);
             }
             catch (error) {
-                return res.status(500).json({ ok: false, error: 'was not able to decrypt token' });
+                return res.status(500).json({ ok: false, error_type: 'internal', error: 'was not able to decrypt token' });
             }
 
             https.get({
@@ -62,7 +62,7 @@ module.exports = function (app) {
                     if (parsed.ok) {
                         return res.json({ ok: true });
                     }
-                    return res.status(500).json({ ok: false, error: parsed.error });
+                    return res.status(500).json({ ok: false, error_type: 'slack', error: parsed.error });
                 });
             });
         });
@@ -71,7 +71,7 @@ module.exports = function (app) {
         .post(function (req, res) {
 
             if (req.body.encrypted_token === undefined) {
-                return res.status(400).json({ ok: false, error: 'encrypted token is undefined' });
+                return res.status(400).json({ ok: false, error_type: 'internal', error: 'encrypted token is undefined' });
             }
 
             var decryptedToken;
@@ -79,7 +79,7 @@ module.exports = function (app) {
                 decryptedToken = cryptography.decrypt(req.body.encrypted_token);
             }
             catch (error) {
-                return res.status(500).json({ ok: false, error: 'was not able to decrypt token' });
+                return res.status(500).json({ ok: false, error_type: 'internal', error: 'was not able to decrypt token' });
             }
 
             https.get({
@@ -95,7 +95,7 @@ module.exports = function (app) {
                     if (parsed.ok) {
                         return res.json({ ok: true });
                     }
-                    return res.status(500).json({ ok: false, error: parsed.error });
+                    return res.status(500).json({ ok: false, error_type: 'slack', error: parsed.error });
                 });
             });
         });

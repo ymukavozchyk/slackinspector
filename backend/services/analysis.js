@@ -35,48 +35,51 @@ function setupAnalysis(token, channel, saveUsageData, res) {
             });
             response.on('end', function () {
                 var parsed = JSON.parse(body);
-                if (parsed.ok) {
 
-                    parsed.messages.forEach(function (message) {
-                        if (message.type === 'message' && message.subtype === undefined) {
-                            var cleanMessage = message.text.trim();
-                            var messageObject = {
-                                author: message.user,
-                                text: cleanMessage + helper.getSuffix(cleanMessage)
-                            };
-                            messages.unshift(messageObject);
-                        }
-                    });
+                if (!parsed.ok) {
+                    return res.status(500).json({ ok: false, error_type: 'slack', error: parsed.error });
+                }
 
-                    if (parsed.has_more) {
-                        var resFromTs = null;
-                        var resToTs = null;
+                parsed.messages.forEach(function (message) {
+                    if (message.type === 'message' && message.subtype === undefined) {
+                        var cleanMessage = message.text.trim();
+                        var messageObject = {
+                            author: message.user,
+                            text: cleanMessage + helper.getSuffix(cleanMessage)
+                        };
+                        messages.unshift(messageObject);
+                    }
+                });
 
-                        if (parsed.oldest !== undefined) {
-                            resFromTs = parsed.oldest;
-                        }
-                        if (parsed.latest !== undefined) {
-                            resToTs = parsed.latest;
-                        }
+                if (parsed.has_more) {
+                    var resFromTs = null;
+                    var resToTs = null;
 
-                        if (resFromTs !== null && resToTs !== null) {
-                            resToTs = parsed.messages.pop().ts;
-                        }
-                        else if (resFromTs === null && resToTs !== null) {
-                            resToTs = parsed.messages.pop().ts;
-                        }
-                        else {
-                            resToTs = parsed.messages.pop().ts;
-                        }
-                        fetch(resFromTs, resToTs);
+                    if (parsed.oldest !== undefined) {
+                        resFromTs = parsed.oldest;
+                    }
+                    if (parsed.latest !== undefined) {
+                        resToTs = parsed.latest;
+                    }
+
+                    if (resFromTs !== null && resToTs !== null) {
+                        resToTs = parsed.messages.pop().ts;
+                    }
+                    else if (resFromTs === null && resToTs !== null) {
+                        resToTs = parsed.messages.pop().ts;
                     }
                     else {
-                        //todo perform statistical analysis
-                        watson.performAnalysis(saveUsageData, messages, res);
+                        resToTs = parsed.messages.pop().ts;
                     }
+                    fetch(resFromTs, resToTs);
                 }
                 else {
-                    return res.status(500).json({ ok: false, error: parsed.error });
+                    if (messages.length === 0) {
+                        return res.status(500).json({ ok: false, error_type: 'internal', error: 'there are no messages to analyze' });
+                    }
+
+                    //todo perform statistical analysis
+                    watson.performAnalysis(saveUsageData, messages, res);
                 }
             });
         });
