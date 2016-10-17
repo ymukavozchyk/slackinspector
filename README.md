@@ -1,6 +1,6 @@
 # Slack Inspector
 ## Part 1 (DEV week)
-A web application which performs an analysis of messages from specific [Slack](https://slack.com/) channel using [IBM Watson Tone Analyzer](https://www.ibm.com/watson/developercloud/tone-analyzer.html).
+An interactive high-fidelity prototype of a web application which performs an analysis of messages from specific [Slack](https://slack.com/) channel using [IBM Watson Tone Analyzer](https://www.ibm.com/watson/developercloud/tone-analyzer.html).
 
 ### Tech Stack
 **Data layer**
