@@ -12,35 +12,43 @@
 </head>
 
 <body>
+
 	<header>
-		<a href="/usage">Usage Statistics</a>
-		<h1>SlackInspector</h1>
+		<div>
+			<a class="logo-link" href="/index"><h2>SlackInspector</h2></a>
+		</div>
+		<div>
+			<a class="btn btn-header" href="/usage" title="Usage statistics of the application">Usage Statistics</a>
+		</div>
 	</header>
 
 	<main>
+		<section class="title">
+			<h1 class="text-center">Authorization</h1>
+		</section>
 		<section>
 			<a href="https://slack.com/oauth/authorize?scope=channels:read,channels:history&client_id=74645913811.78370378210">
 				<img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x"
 				/>
 			</a>
 		</section>
-		<section>
-			<h4>What is SlackInspector?</h4>
+		<section class="description-section">
+			<h3 class="text-center">What is SlackInspector?</h3>
 			<p>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis
-				vulputate commodo lectus, ac blandit elit tincidunt id.
+				vulputate commodo lectus, ac blandit elit tincidunt id. <a class="link" href="/about" target="_blank">More information</a>
 			</p>
 		</section>
 	</main>
 
 	<footer>
-		<p>
-			<a href="/about" target="_blank">About</a>
-			<a href="https://github.com/ymukavozchyk/slackinspector/tree/part-1" target="_blank">GitHub</a>
-		</p>
-		<p>
+		<div>
+			<a class="link link-simple" href="/about" target="_blank" title="About SlackInspector">About</a>
+			<a class="link link-simple" href="https://github.com/ymukavozchyk/slackinspector/tree/part-1" target="_blank" title="SlackInspector on GitHub">GitHub</a>
+		</div>
+		<div class="copyright">
 			© 2016 SlackInspector
-		</p>
+		</div>
 	</footer>
 
 	<script type="text/javascript" src="assets/vendors/jquery/dist/jquery.min.js"></script>

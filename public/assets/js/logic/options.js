@@ -1,23 +1,5 @@
 'use strict';
 
-function logOut() {
-    if (checkToken()) {
-        $.post('/api/auth/revoke', {
-            encrypted_token: localStorage.getItem('encrypted_token')
-        })
-            .done(function () {
-                localStorage.removeItem('encrypted_token');
-                window.location.replace('login');
-            })
-            .fail(function (data) {
-                alert(data.responseJSON.error);
-            });
-    }
-    else {
-        alert('token is undefined');
-    }
-};
-
 function checkStep1Options() {
     if (!sessionStorage.getItem('selected_channel_id') || !sessionStorage.getItem('selected_channel_name')) {
         return false;
@@ -29,6 +11,18 @@ function goBack() {
     sessionStorage.removeItem('selected_channel_id');
     sessionStorage.removeItem('selected_channel_name');
     window.location.href = 'index';
+};
+
+function enableOptions(){
+    if($(this).is(':checked')){
+        $('input[name="additionalOptions"]').prop('disabled', false);
+    }
+};
+
+function disableOptions(){
+    if($(this).is(':checked')){
+        $('input[name="additionalOptions"]').prop('disabled', true);
+    }
 };
 
 function setDateTimeParameter(dateElementId, timeElementId, parameterName) {
@@ -109,6 +103,8 @@ function optionsLogic() {
     $('#logOutButton').click(logOut);
     $('#backButton').click(goBack);
     $('#performAnalysisButton').click(setAnalysisOptions);
+    $('#disableAdditionalOptionsRadio').change(disableOptions);
+    $('#enableAdditionalOptionsRadio').change(enableOptions);
 
     $('#selectedChannelName').text('#' + sessionStorage.getItem('selected_channel_name'));
 };

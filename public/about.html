@@ -2,17 +2,69 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-    <title>SlackInspector - About</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
-    <meta name="description" content="Analyzing messages from specific Slack channel via IBM Watson Tone Analyzer">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+	<title>SlackInspector - About</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+	<meta name="description" content="Analyzing messages from specific Slack channel via IBM Watson Tone Analyzer">
+
+	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
 </head>
 
 <body>
-    <header>
-        <h1>SlackInspector - About</h1>
-    </header>
+
+	<header>
+		<div>
+			<a class="logo-link" href="/index">
+				<h2>SlackInspector</h2>
+			</a>
+		</div>
+		<div>
+			<a class="btn btn-header" href="/usage">Usage Statistics</a>
+			<a id="performAnalysisButton" class="btn btn-header hidden" href="/index">Perform Analysis</a>
+			<a id="logOutButton" class="btn btn-header hidden" href="javascript:void(0)">Log Out from Slack</a>
+		</div>
+	</header>
+
+	<main>
+		<section class="title">
+			<h1 class="text-center">About SlackInspector</h1>
+		</section>
+		<section class="about-section">
+			<h2 class="text-center">What is SlackInspector?</h2>
+			<p>
+				Nulla felis quam, faucibus ut mauris a, interdum fermentum ex. Vivamus in dictum dolor. Curabitur faucibus eu neque non tristique.
+				Fusce finibus sed ligula et vehicula. Quisque aliquam, erat at vulputate lobortis, ante risus congue libero, id fringilla
+				sem libero ut magna. Praesent elit risus, tincidunt a tellus a, tempor vulputate justo. Sed iaculis lectus nibh, sed
+				fringilla eros tristique sed. Curabitur laoreet dolor libero, semper lacinia elit porta vel. Morbi lobortis orci in gravida
+				aliquet. Nullam dapibus orci in semper sagittis. Sed scelerisque sed urna at placerat. In mattis egestas commodo. Donec
+				tincidunt aliquam purus, vehicula maximus elit rhoncus.
+			</p>
+		</section>
+		<section class="about-section">
+			<h2 class="text-center">Privacy Policy</h2>
+			<p>
+				Suspendisse iaculis quis tellus vitae dictum. Etiam vel sagittis risus, vel euismod dolor. Pellentesque orci massa, congue
+				ut feugiat sed, sollicitudin a justo. Donec iaculis sapien ut pharetra cursus. Maecenas id urna pharetra, pharetra turpis
+				eu, varius justo. Donec in lectus condimentum, pulvinar mi ut, bibendum purus. Nulla facilisi. Etiam ac augue in orci
+				aliquam pulvinar. Nullam id felis mi.
+			</p>
+		</section>
+	</main>
+
+	<footer>
+		<div>
+			<a class="link link-simple" href="/about" target="_blank" title="About SlackInspector">About</a>
+			<a class="link link-simple" href="https://github.com/ymukavozchyk/slackinspector/tree/part-1" target="_blank" title="SlackInspector on GitHub">GitHub</a>
+		</div>
+		<div class="copyright">
+			© 2016 SlackInspector
+		</div>
+	</footer>
+
+	<script type="text/javascript" src="assets/vendors/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="assets/js/services/utilities.js"></script>
+	<script type="text/javascript" src="assets/js/logic/about.js"></script>
 </body>
 
 </html>

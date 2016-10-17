@@ -5,15 +5,14 @@ function checkForAuthCode() {
     if (authCode !== null) {
         $.post('/api/auth/login', {
             code: authCode
-        }, function (data) {
-            if (data.ok) {
+        })
+            .done(function (data) {
                 localStorage.setItem('encrypted_token', data.encrypted_token);
                 window.location.replace('index');
-            }
-            else {
-                alert(data.error);
-            }
-        });
+            })
+            .fail(function (data) {
+                alert(data.responseJSON.error_type + ' - ' + data.responseJSON.error);
+            });
     }
 };
 

@@ -1,23 +1,5 @@
 'use strict';
 
-function logOut() {
-    if (checkToken()) {
-        $.post('/api/auth/revoke', {
-            encrypted_token: localStorage.getItem('encrypted_token')
-        })
-            .done(function () {
-                localStorage.removeItem('encrypted_token');
-                window.location.replace('login');
-            })
-            .fail(function (data) {
-                alert(data.responseJSON.error);
-            });
-    }
-    else {
-        alert('token is undefined');
-    }
-};
-
 function getListOfChannels() {
     if (checkToken()) {
         $.post('/api/core/channels', {
@@ -27,16 +9,18 @@ function getListOfChannels() {
                 var htmlToAppend = '';
                 var checked = 'checked';
                 data.channels.forEach(function (channel) {
-                    htmlToAppend += '<p><input type="radio" name="channel" displayName="'
-                        + channel.name + '" value="' + channel.id + '" ' + checked + '> #' + channel.name + '</p>';
+                    htmlToAppend += '<p><label><input type="radio" name="channel" displayName="'
+                        + channel.name + '" value="' + channel.id + '" ' + checked + '> #' + channel.name + '</label></p>';
                     checked = '';
                 });
 
                 $('#channelList').html(htmlToAppend);
+                $('#loaderSection').hide();
+                $('#channelSection').show();
                 $('#nextStepButton').show();
             })
             .fail(function (data) {
-                alert(data.responseJSON.error);
+                alert(data.responseJSON.error_type + ' - ' + data.responseJSON.error);
             });
     }
     else {

@@ -3,6 +3,7 @@
   "author": "Yauheni Mukavozchyk <ymukavozchyk@luc.edu>",
   "version": "0.0.1",
   "dependencies": {
-    "jquery": "latest"
+    "jquery": "latest",
+    "chart.js": "latest"
   }
 }

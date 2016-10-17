@@ -12,31 +12,44 @@
 </head>
 
 <body>
+
 	<header>
-		<a href="/usage">Usage Statistics</a>
-		<h1>SlackInspector</h1>
-		<button id="logOutButton">Log Out from Slack</button>
+		<div>
+			<a class="logo-link" href="/index"><h2>SlackInspector</h2></a>
+		</div>
+		<div>
+			<a class="btn btn-header" href="/usage">Usage Statistics</a>
+			<a id="logOutButton" class="btn btn-header" href="javascript:void(0)">Log Out from Slack</a>
+		</div>
 	</header>
 
 	<main>
 		<section>
-			<h2>Analysis</h2>
-			<h3>Step 1 of 2</h3>
-			<h4>Select Slack channel for analysis</h4>
-
+			<h1 class="text-center">Analysis</h1>
+		</section>
+		<section>
+			<h2 class="text-center">Step 1 of 2</h2>
+			<h3 class="text-center">Select Slack channel for analysis</h3>
+		</section>
+		<section id="loaderSection">
+			<div class="loader"></div>
+		</section>
+		<section id="channelSection" class="hidden">
 			<div id="channelList"></div>
-			<button id="nextStepButton" class="hidden">Next ></button>
+		</section>
+		<section class="action-section-single">
+			<a id="nextStepButton" class="btn btn-action hidden" href="javascript:void(0)">Next ></a>
 		</section>
 	</main>
 
 	<footer>
-		<p>
-			<a href="/about" target="_blank">About</a>
-			<a href="https://github.com/ymukavozchyk/slackinspector/tree/part-1" target="_blank">GitHub</a>
-		</p>
-		<p>
+		<div>
+			<a class="link link-simple" href="/about" target="_blank" title="About SlackInspector">About</a>
+			<a class="link link-simple" href="https://github.com/ymukavozchyk/slackinspector/tree/part-1" target="_blank" title="SlackInspector on GitHub">GitHub</a>
+		</div>
+		<div class="copyright">
 			© 2016 SlackInspector
-		</p>
+		</div>
 	</footer>
 
 	<script type="text/javascript" src="assets/vendors/jquery/dist/jquery.min.js"></script>

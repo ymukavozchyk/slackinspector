@@ -12,32 +12,42 @@
 </head>
 
 <body>
+
 	<header>
-		<a href="/index">Perform Analysis</a>
-		<h1>SlackInspector</h1>
-		<button class="hidden" id="logOutButton">Log Out from Slack</button>
+		<div>
+			<a class="logo-link" href="/index"><h2>SlackInspector</h2></a>
+		</div>
+		<div>
+			<a class="btn btn-header" href="/index">Perform Analysis</a>
+			<a id="logOutButton" class="btn btn-header hidden" href="javascript:void(0)">Log Out from Slack</a>
+		</div>
 	</header>
 
 	<main>
 		<section>
-			<h2>Usage Statistics</h2>
-			<h4>IBM Watson Tone Analysis Average Results</h4>
-
-			<div id="results" class="watson-results"></div>
+			<h1 class="text-center">Usage Statistics</h1>
 		</section>
+		<section id="loaderSection">
+			<div class="loader"></div>
+		</section>
+		<div id="usageResults" class="hidden">
+			<section id="usageStatistics" class="result-section"></section>
+		</div>
+
 	</main>
 
 	<footer>
-		<p>
-			<a href="/about" target="_blank">About</a>
-			<a href="https://github.com/ymukavozchyk/slackinspector/tree/part-1" target="_blank">GitHub</a>
-		</p>
-		<p>
+		<div>
+			<a class="link link-simple" href="/about" target="_blank" title="About SlackInspector">About</a>
+			<a class="link link-simple" href="https://github.com/ymukavozchyk/slackinspector/tree/part-1" target="_blank" title="SlackInspector on GitHub">GitHub</a>
+		</div>
+		<div class="copyright">
 			© 2016 SlackInspector
-		</p>
+		</div>
 	</footer>
 
 	<script type="text/javascript" src="assets/vendors/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="assets/vendors/chart.js/dist/Chart.min.js"></script>
 	<script type="text/javascript" src="assets/js/services/utilities.js"></script>
 	<script type="text/javascript" src="assets/js/logic/usage.js"></script>
 </body>

@@ -12,54 +12,67 @@
 </head>
 
 <body>
+
 	<header>
-		<a href="/usage">Usage Statistics</a>
-		<h1>SlackInspector</h1>
-		<button id="logOutButton">Log Out from Slack</button>
+		<div>
+			<a class="logo-link" href="/index"><h2>SlackInspector</h2></a>
+		</div>
+		<div>
+			<a class="btn btn-header" href="/usage">Usage Statistics</a>
+			<a id="logOutButton" class="btn btn-header" href="javascript:void(0)">Log Out from Slack</a>
+		</div>
 	</header>
 
 	<main>
 		<section>
-			<h2>Analysis</h2>
-			<h3>Step 2 of 2</h3>
-			<h4>Select analysis options</h4>
+			<h1 class="text-center">Analysis</h1>
+		</section>
+		<section>
+			<h2 class="text-center">Step 2 of 2</h2>
+			<h3 class="text-center">Select analysis options</h3>
+		</section>
+		<section class="options-section">
 
-			<p><b id="selectedChannelName"></b></p>
+			<h4 id="selectedChannelName" class="text-center"></h4>
 
 			<div>
-				<p><input type="radio" name="mode" value="1" checked> All messages</p>
-				<p><input type="radio" name="mode" value="2"> Messages within specific date and time range</p>
+				<p><label><input type="radio" id="disableAdditionalOptionsRadio" name="mode" value="1" checked> All messages</label></p>
+				<p><label><input type="radio" id="enableAdditionalOptionsRadio" name="mode" value="2"> Messages within specific date and time range</label></p>
 				<p>
-					<label><input type="checkbox" id="fromCheck"> From</label>
-					<input type="date" id="fromDate">
-					<input type="time" id="fromTime">
+					<label><input type="checkbox" id="fromCheck" name="additionalOptions" disabled> From</label>
+					<input type="date" id="fromDate" name="additionalOptions" disabled>
+					<input type="time" id="fromTime" name="additionalOptions" disabled>
 				</p>
 				<p>
-					<label><input type="checkbox" id="toCheck"> To</label>
-					<input type="date" id="toDate">
-					<input type="time" id="toTime">
+					<label><input type="checkbox" id="toCheck" name="additionalOptions" disabled> To</label>
+					<input type="date" id="toDate" name="additionalOptions" disabled>
+					<input type="time" id="toTime" name="additionalOptions" disabled>
 				</p>
 				<p>
 					<label>
                         <input type="checkbox" id="dataUsageCheck" checked> Yes, you can use my anonymous analysis results for usage statistics.
-                        <a href="/about" target="_blank">More information</a>
+                        <a class="link" href="/about" target="_blank">More information</a>
                     </label>
 				</p>
 			</div>
 
-			<button id="backButton">< Back</button>
-			<button id="performAnalysisButton">Perform Analysis</button>
+
+		</section>
+
+		<section class="action-section-double">
+			<a id="backButton" class="btn btn-action" href="javascript:void(0)">< Back</a>
+			<a id="performAnalysisButton" class="btn btn-action" href="javascript:void(0)">Perform Analysis</a>
 		</section>
 	</main>
 
 	<footer>
-		<p>
-			<a href="/about" target="_blank">About</a>
-			<a href="https://github.com/ymukavozchyk/slackinspector/tree/part-1" target="_blank">GitHub</a>
-		</p>
-		<p>
+		<div>
+			<a class="link link-simple" href="/about" target="_blank" title="About SlackInspector">About</a>
+			<a class="link link-simple" href="https://github.com/ymukavozchyk/slackinspector/tree/part-1" target="_blank" title="SlackInspector on GitHub">GitHub</a>
+		</div>
+		<div class="copyright">
 			© 2016 SlackInspector
-		</p>
+		</div>
 	</footer>
 
 	<script type="text/javascript" src="assets/vendors/jquery/dist/jquery.min.js"></script>

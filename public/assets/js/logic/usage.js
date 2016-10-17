@@ -1,40 +1,63 @@
 'use strict';
 
-function logOut() {
-    if (checkToken()) {
-        $.post('/api/auth/revoke', {
-            encrypted_token: localStorage.getItem('encrypted_token')
-        })
-            .done(function () {
-                localStorage.removeItem('encrypted_token');
-                window.location.replace('login');
-            })
-            .fail(function (data) {
-                alert(data.responseJSON.error);
-            });
-    }
-    else {
-        alert('token is undefined');
-    }
-};
+function createChart(categoryId, categoryName, tones) {
 
-function formResultTable(caption, tones) {
-    var table = '<table class="watson-results-element"><caption>' + caption + '</caption>';
+    var options = {
+        scales: {
+            xAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        },
+        legend: {
+            display: false
+        },
+        title: {
+            display: true,
+            text: categoryName,
+            fontSize: 18
+        }
+    };
+
+    var dataLabels = [];
+    var dataValues = [];
 
     tones.forEach(function (tone) {
-        table += '<tr><td>' + tone.tone_name + '</td><td>' + Round2(tone.average_value) + '</td></tr>';
+        dataLabels.push(tone.tone_name);
+        dataValues.push(Round2(tone.average_value));
     });
 
-    table += '</table>';
+    var data = {
+        labels: dataLabels,
+        datasets: [
+            {
+                label: categoryName,
+                data: dataValues,
+                backgroundColor: 'rgba(8, 109, 178, 0.7)',
+                borderColor: 'rgba(8, 109, 178, 1)'
+            }
+        ]
+    };
 
-    return table;
+    $('#usageStatistics').append('<div><canvas id="' + categoryId + '" width="300" height="300"></canvas></div>');
+
+    var ctx = $('#'+categoryId);
+    var chart = new Chart(ctx, {
+        type: 'horizontalBar',
+        data: data,
+        options: options
+    });
 };
 
 function getUsageData() {
     $.get('/api/core/usage/tone')
         .done(function (data) {
+            $('#loaderSection').hide();
+            $('#usageResults').show();
+
             data.result.forEach(function (resultElement) {
-                $('#results').append(formResultTable(resultElement._id.category_name, resultElement.tones));
+                createChart(resultElement._id.category_id, resultElement._id.category_name, resultElement.tones)
             });
         })
         .fail(function (data) {
@@ -45,7 +68,7 @@ function getUsageData() {
 function usageLogic() {
     if (checkToken()) {
         $('#logOutButton').click(logOut);
-        $('#logOutButton').show();
+        $('#logOutButton').removeClass('hidden');
     }
 
     getUsageData();

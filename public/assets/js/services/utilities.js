@@ -20,3 +20,21 @@ function getParameterByName(name) {
 function Round2(value) {
     return Math.round(value * 100) / 100;
 };
+
+function logOut() {
+    if (checkToken()) {
+        $.post('/api/auth/revoke', {
+            encrypted_token: localStorage.getItem('encrypted_token')
+        })
+            .done(function () {
+                localStorage.removeItem('encrypted_token');
+                window.location.replace('login');
+            })
+            .fail(function (data) {
+                alert(data.responseJSON.error_type + ' - ' + data.responseJSON.error);
+            });
+    }
+    else {
+        alert('token is undefined');
+    }
+};
