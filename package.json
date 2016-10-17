@@ -9,9 +9,7 @@
     "compression": "*",
     "bower": "*",
     "watson-developer-cloud": "*",
-    "mongoose": "*"
-  },
-  "devDependencies": {
+    "mongoose": "*",
     "morgan": "*"
   },
   "scripts": {
