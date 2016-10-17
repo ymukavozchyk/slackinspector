@@ -9,9 +9,11 @@
     "compression": "*",
     "bower": "*",
     "watson-developer-cloud": "*",
-    "mongoose": "*"
-  },
-  "devDependencies": {
+    "mongoose": "*",
     "morgan": "*"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "postinstall": "bower install"
   }
 }
