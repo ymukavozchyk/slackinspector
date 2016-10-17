@@ -17,6 +17,7 @@ A web application which performs an analysis of messages from specific [Slack](h
 * CSS3
 * JS (ES5)
 * jQuery
+* Chart.js
 
 ----------
 **COMP 424 - Client-Side Web Design**  
