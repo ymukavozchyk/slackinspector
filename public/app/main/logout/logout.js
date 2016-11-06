@@ -27,7 +27,10 @@
                     $state.go('login');
                 },
                 function (e) {
-                    $mdDialog.hide(e.data.error + ' (' + e.data.error_type + ')', 'error');
+                    $mdDialog.hide({
+                        type: e.data.error_type,
+                        error: e.data.error
+                    });
                 });
         };
     }
