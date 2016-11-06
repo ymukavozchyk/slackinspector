@@ -9,10 +9,10 @@
     function LoginController(CredentialService) {
         var vm = this;
 
-        vm.loginHref = 'https://slack.com/oauth/authorize'
-            + '?scope=channels:read,channels:history'
-            + '&client_id=74645913811.92497918727'
-            + '&state=';
+        vm.loginHref = 'https://slack.com/oauth/authorize' +
+            '?scope=channels:read,channels:history' +
+            '&client_id=74645913811.92497918727' +
+            '&state=';
 
         activate();
 

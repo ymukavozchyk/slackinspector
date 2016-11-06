@@ -20,13 +20,20 @@
             }
         }
 
-        $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+        function preventAndGo(stateName, event) {
+            event.preventDefault();
+            $state.go(stateName);
+        }
+
+        function checkProtectedRoutes(toState, event) {
             if (toState.data.protected) {
                 if (!CredentialService.isTokenPresent()) {
                     preventAndGo('login', event);
                 }
             }
+        }
 
+        function checkSpecificRoutes(toState, event) {
             if (toState.name === 'login' && CredentialService.isTokenPresent()) {
                 preventAndGo('main.step1', event);
             }
@@ -34,7 +41,9 @@
             if (toState.name === 'main') {
                 preventAndGo('main.step1', event);
             }
+        }
 
+        function checkCallbackRoute(toState, toParams, event) {
             if (toState.name === 'callback') {
                 var redirectFlag = false;
 
@@ -55,15 +64,16 @@
                     preventAndGo('main.step1', event);
                 }
             }
+        }
+
+        $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+            checkProtectedRoutes(toState, event);
+            checkSpecificRoutes(toState, event);
+            checkCallbackRoute(toState, toParams, event);
         });
 
         $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
             $rootScope.pageTitle = toState.data.title;
         });
-
-        function preventAndGo(stateName, event) {
-            event.preventDefault();
-            $state.go(stateName);
-        }
     }
 })();

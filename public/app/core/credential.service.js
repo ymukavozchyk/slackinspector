@@ -62,7 +62,7 @@
 
         function getState() {
             if (uniqueState === null) {
-                uniqueState = (new Date).getTime();
+                uniqueState = (new Date()).getTime();
                 sessionStorage.setItem('auth.state', uniqueState);
             }
             return uniqueState;
