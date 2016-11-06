@@ -43,6 +43,10 @@ module.exports = function (app) {
                             });
                         });
 
+                        if(channels.length === 0){
+                            return res.status(500).json({ ok: false, error_type: 'internal', error: 'channel list is empty' });
+                        }
+
                         return res.json({ ok: true, channels: channels });
                     }
                     return res.status(500).json({ ok: false, error_type: 'slack', error: parsed.error });
