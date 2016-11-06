@@ -5,12 +5,26 @@
   "version": "0.0.1",
   "dependencies": {
     "express": "*",
-    "body-parser":  "*",
+    "body-parser": "*",
     "compression": "*",
     "bower": "*",
     "watson-developer-cloud": "*",
     "mongoose": "*",
-    "morgan": "*"
+    "morgan": "*",
+    "gulp": "*",
+    "gulp-sass": "*",
+    "gulp-uglify": "*",
+    "gulp-concat": "*",
+    "gulp-clean": "*",
+    "gulp-cssmin": "*",
+    "gulp-html-replace": "*"
+  },
+  "devDependencies": {
+    "gulp-nodemon": "*",
+    "browser-sync": "*",
+    "jshint": "*",
+    "gulp-jshint": "*",
+    "jshint-stylish": "*"
   },
   "scripts": {
     "start": "node server.js",

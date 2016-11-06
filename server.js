@@ -20,8 +20,8 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 require('./backend/routes/authRoute')(app);
 require('./backend/routes/coreRoute')(app);
 
-app.get('*', function (req, res) {
-    res.sendFile(__dirname + '/public/index.html');
+app.get('/*', function (req, res) {
+    res.redirect('/');
 });
 
 app.listen(port);

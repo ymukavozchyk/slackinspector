@@ -1,18 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app" ng-controller="ApplicationController">
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-  <title>SlackInspector</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
-  <meta name="description" content="Analyzing messages from specific Slack channel via IBM Watson Tone Analyzer">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title ng-bind="'SlackInspector &ndash; ' + pageTitle">SlackInspector</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <meta name="description" content="Analyzing messages from specific Slack channel via IBM Watson Tone Analyzer">
+
+    <!-- build:css -->
+    <link rel="stylesheet" href="assets/vendors/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="assets/styles/css/build/main.css">
+    <!-- endbuild -->
+
+    <style type="text/css">
+        [ng\:cloak],
+        [ng-cloak],
+        [data-ng-cloak],
+        [x-ng-cloak],
+        .ng-cloak,
+        .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
 </head>
 
-<body>
-    <header>
-        <h1>Base page</h1>
-    </header>
+<body layout="column" ng-cloak>
+    <div flex layout="column" ui-view></div>
+
+    <!-- build:js -->
+    <!-- Angular js -->
+    <script src="assets/vendors/angular/angular.min.js"></script>
+    <script src="assets/vendors/angular-animate/angular-animate.min.js"></script>
+    <script src="assets/vendors/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="assets/vendors/angular-aria/angular-aria.min.js"></script>
+    <script src="assets/vendors/angular-messages/angular-messages.min.js"></script>
+
+    <!-- Angular Material -->
+    <script src="assets/vendors/angular-material/angular-material.min.js"></script>
+
+    <!-- Angular UI Router -->
+    <script src="assets/vendors/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+    <!-- Application -->
+    <script src="app/app.module.js"></script>
+    <script src="app/app.js"></script>
+
+    <script src="app/core/core.module.js"></script>
+    <script src="app/core/route.config.js"></script>
+    <script src="app/core/credential.service.js"></script>
+    <script src="app/core/api.service.js"></script>
+
+    <script src="app/login/login.module.js"></script>
+    <script src="app/login/login.js"></script>
+    <script src="app/login/callback/callback.module.js"></script>
+    <script src="app/login/callback/callback.js"></script>
+
+    <script src="app/main/main.module.js"></script>
+    <script src="app/main/main.js"></script>
+    <script src="app/main/step1/step1.module.js"></script>
+    <script src="app/main/step1/step1.js"></script>
+
+    <script src="app/about/about.module.js"></script>
+    <script src="app/about/about.js"></script>
+    <!-- endbuild -->
+
 </body>
 
 </html>

@@ -1,0 +1,20 @@
+.logo-link{
+  &:link, &:visited, &:hover, &:active{
+    color: #fff;
+    text-decoration: none;
+  }
+
+}
+
+.link {
+    color: #265C83;
+    text-decoration: none;
+
+    &:link, &:visited {
+      color: #265C83;
+    }
+
+    &:hover, &:active{
+      color: #007BE6;
+    }
+}

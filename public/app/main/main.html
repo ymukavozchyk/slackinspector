@@ -1,0 +1,8 @@
+<md-toolbar layout="row" layout-align="center center">
+    <span flex></span>
+    <a class="logo-link" ui-sref="main.step1">SlackInspector</a>
+    <span flex></span>
+    <md-button ng-show="vm.showLogOut" ng-click="vm.logOut($event)" class="md-raised md-primary" aria-label="Log Out">Log Out</md-button>
+</md-toolbar>
+
+<div ui-view flex layout="row"></div>
