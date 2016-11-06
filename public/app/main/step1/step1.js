@@ -5,12 +5,12 @@
         .module('app.main.step1')
         .controller('Step1Controller', Step1Controller);
 
-    Step1Controller.$inject = ['$mdDialog', 'ApiService', 'CredentialService'];
-    function Step1Controller($mdDialog, ApiService, CredentialService) {
+    Step1Controller.$inject = ['$mdDialog', 'ApiService', 'CredentialService', 'SharedService'];
+    function Step1Controller($mdDialog, ApiService, CredentialService, SharedService) {
         var vm = this;
 
         vm.channels = [];
-        vm.selectedChannel = '';
+        vm.selectedChannelIndex = 0;
 
         vm.hideLoader = false;
         vm.showError = false;
@@ -20,10 +20,11 @@
         activate();
 
         function activate() {
+            SharedService.resetStep1();
+
             ApiService.getChannels(CredentialService.getToken())
                 .then(function (res) {
                     vm.channels = res.data.channels;
-                    vm.selectedChannel = vm.channels[0].id;
                     vm.hideLoader = true;
                 },
                 function (e) {
@@ -46,6 +47,19 @@
                     .ariaLabel(errorTitle)
                     .ok('Ok')
             );
+        };
+
+        vm.goToStep2 = function () {
+            var selectedChannel = vm.channels[vm.selectedChannelIndex];
+            if (selectedChannel !== undefined) {
+                SharedService.setSelectedChannel(selectedChannel);
+                //redirect
+            }
+            else {
+                vm.errorType = 'client';
+                vm.errorMessage = 'Was not able to get selected channel';
+                vm.showErrorDialog();
+            }
         };
     }
 })();
