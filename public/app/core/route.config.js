@@ -49,6 +49,16 @@
                     protected: true
                 }
             })
+            .state('main.step2', {
+                url: '/step2',
+                templateUrl: 'app/main/step2/step2.html',
+                controller: 'Step2Controller',
+                controllerAs: 'vm',
+                data: {
+                    title: 'Step 2',
+                    protected: true
+                }
+            })
             .state('about', {
                 url: '/about',
                 templateUrl: 'app/about/about.html',

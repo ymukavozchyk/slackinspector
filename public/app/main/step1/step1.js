@@ -5,8 +5,8 @@
         .module('app.main.step1')
         .controller('Step1Controller', Step1Controller);
 
-    Step1Controller.$inject = ['$mdDialog', 'ApiService', 'CredentialService', 'SharedService'];
-    function Step1Controller($mdDialog, ApiService, CredentialService, SharedService) {
+    Step1Controller.$inject = ['$mdDialog', '$state', 'ApiService', 'CredentialService', 'SharedService'];
+    function Step1Controller($mdDialog, $state, ApiService, CredentialService, SharedService) {
         var vm = this;
 
         vm.channels = [];
@@ -53,7 +53,7 @@
             var selectedChannel = vm.channels[vm.selectedChannelIndex];
             if (selectedChannel !== undefined) {
                 SharedService.setSelectedChannel(selectedChannel);
-                //redirect
+                $state.go('main.step2');
             }
             else {
                 vm.errorType = 'client';
