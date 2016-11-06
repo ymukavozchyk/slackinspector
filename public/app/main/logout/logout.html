@@ -1,0 +1,25 @@
+<md-dialog aria-label="Logout">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Log out</h2>
+        </div>
+    </md-toolbar>
+    <md-content layout-padding>
+
+        <div>
+            <md-progress-linear md-mode="query" ng-hide='vm.hideProgressBar'></md-progress-linear>
+            <p>Do you really want to log out from Slack?</p>
+        </div>
+
+        <div layout="row">
+            <md-button aria-label="No" class="md-raised" ng-disabled="vm.controlsDisabled" ng-click="vm.closeDialog()">
+                No
+            </md-button>
+            <span flex></span>
+            <md-button aria-label="Yes" class="md-raised md-primary" ng-disabled="vm.controlsDisabled" ng-click="vm.logout()">
+                Yes
+            </md-button>
+        </div>
+
+    </md-content>
+</md-dialog>

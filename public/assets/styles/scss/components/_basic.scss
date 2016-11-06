@@ -18,3 +18,18 @@
       color: #007BE6;
     }
 }
+
+md-toast {
+  &.error {
+    .md-toast-content {
+      background: rgb(244, 67, 54);
+      color: white;
+    }
+  }
+  &.success {
+    .md-toast-content {
+      background: rgb(76, 175, 80);
+      color: white;
+    }
+  }
+}

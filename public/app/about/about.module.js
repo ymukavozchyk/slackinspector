@@ -1,9 +1,6 @@
-(function () {
+(function() {
     'use strict';
 
     angular
-        .module('app.about',
-        [
-            'ngMaterial'
-        ]);
+        .module('app.about', []);
 })();

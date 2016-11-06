@@ -13,6 +13,11 @@
         <md-content class="content" ng-show="vm.hideLoader" flex>
             <p>{{ vm.errorMessage }}</p>
             <p>You will be redirected to the login in {{ vm.counter }} seconds.</p>
+            <p>
+                <a ui-sref="login">Click here</a> if you do not want to wait.
+            </p>
         </md-content>
     </div>
 </div>
+
+<div ng-include="'app/partials/footer/footer.html'"></div>

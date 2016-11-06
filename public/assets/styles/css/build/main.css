@@ -10,6 +10,25 @@
   .link:hover, .link:active {
     color: #007BE6; }
 
+md-toast.error .md-toast-content {
+  background: #f44336;
+  color: white; }
+
+md-toast.success .md-toast-content {
+  background: #4caf50;
+  color: white; }
+
+html, body {
+  font-size: 14px;
+  height: 100%;
+  margin: 0px;
+  padding: 0px; }
+
+.content {
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 5px; }
+
 .basic-footer {
   border-top: 1px solid #ddd; }
   .basic-footer a {

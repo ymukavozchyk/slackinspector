@@ -5,8 +5,8 @@
         .module('app.main')
         .controller('MainController', MainController);
 
-    MainController.$inject = ['$mdDialog', '$state', 'CredentialService', 'ApiService'];
-    function MainController($mdDialog, $state, CredentialService, ApiService) {
+    MainController.$inject = ['$mdDialog', '$mdToast', 'CredentialService'];
+    function MainController($mdDialog, $mdToast, CredentialService) {
         var vm = this;
 
         vm.showLogOut = false;
@@ -19,27 +19,26 @@
             }
         }
 
+        function showToast(text, type) {
+            $mdToast.show(
+                $mdToast.simple()
+                    .textContent(text)
+                    .position('top right')
+                    .hideDelay(6000)
+                    .toastClass(type)
+            );
+        }
+
         vm.logOut = function (event) {
-            $mdDialog
-                .show(
-                $mdDialog.confirm()
-                    .title('Log out from Slack')
-                    .textContent('Do you really want to log out from Slack?')
-                    .ariaLabel('Log out from Slack')
-                    .targetEvent(event)
-                    .ok('Yes')
-                    .cancel('No')
-                )
-                .then(function () {
-                    //todo loader
-                    ApiService.logout(CredentialService.getToken())
-                        .then(function () {
-                            CredentialService.resetToken();
-                            $state.go('login');
-                        },
-                        function (e) {
-                            alert(e.data.error_type + ' : ' + e.data.error);
-                        });
+            $mdDialog.show({
+                templateUrl: 'app/main/logout/logout.html',
+                targetEvent: event,
+                controller: 'LogoutController as vm',
+                clickOutsideToClose: false,
+                escapeToClose: false
+            })
+                .then(function (error) {
+                    showToast(error, 'error');
                 });
         };
     }

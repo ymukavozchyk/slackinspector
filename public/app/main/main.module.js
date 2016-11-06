@@ -4,6 +4,7 @@
     angular
         .module('app.main',
         [
-            'ngMaterial'
+            'ngMaterial',
+            'ngMessages'
         ]);
 })();
