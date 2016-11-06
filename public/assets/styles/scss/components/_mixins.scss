@@ -1,0 +1,16 @@
+@mixin link-template($primary-color, $accent-color, $decoration, $hover-decoration){
+    color: $primary-color;
+    text-decoration: $decoration;
+
+    &:link, &:visited {
+      color: $primary-color;
+    }
+
+    &:hover, &:active{
+      color: $accent-color;
+    }
+
+    &:hover {
+      text-decoration: $hover-decoration;
+    }
+}

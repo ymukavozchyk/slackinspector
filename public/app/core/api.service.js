@@ -9,19 +9,26 @@
     function ApiService($http) {
         var service = {
             login: login,
-            logout: logout
+            logout: logout,
+            getChannels: getChannels
         };
 
         return service;
 
-        function login(authCode){
+        function login(authCode) {
             return $http.post('/api/auth/login', {
                 code: authCode
             });
         }
 
-        function logout(token){
+        function logout(token) {
             return $http.post('/api/auth/revoke', {
+                encrypted_token: token
+            });
+        }
+
+        function getChannels(token) {
+            return $http.post('/api/core/channels', {
                 encrypted_token: token
             });
         }

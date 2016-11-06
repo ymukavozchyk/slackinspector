@@ -1,22 +1,18 @@
+@import 'mixins';
+
 .logo-link{
   &:link, &:visited, &:hover, &:active{
     color: #fff;
     text-decoration: none;
   }
-
 }
 
 .link {
-    color: #265C83;
-    text-decoration: none;
+  @include link-template(#265C83, #007BE6, none, none);
+}
 
-    &:link, &:visited {
-      color: #265C83;
-    }
-
-    &:hover, &:active{
-      color: #007BE6;
-    }
+.error-link {
+  @include link-template(#666666, #828282, underline, underline);
 }
 
 md-toast {
@@ -32,4 +28,9 @@ md-toast {
       color: white;
     }
   }
+}
+
+.neutral-warning-text{
+  text-align: center;
+  color: #757575;
 }

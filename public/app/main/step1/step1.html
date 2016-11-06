@@ -1,5 +1,23 @@
-<div flex layout="column">
-    <md-content class="content" flex>
-        <p>Step 1</p>
-    </md-content>
+<div layout="row" layout-sm="column" layout-align="center center" ng-hide="vm.hideLoader" flex>
+    <md-progress-circular md-mode="indeterminate" md-diameter="70"></md-progress-circular>
+</div>
+
+<md-content layout="row" layout-align="center center" ng-show="vm.hideLoader" ng-class="{ flex: vm.hideLoader && !vm.showError }">
+
+    <md-radio-group ng-model="vm.selectedChannel">
+        <md-radio-button ng-repeat="channel in vm.channels" value="{{ channel.id }}" class="md-primary">#{{ channel.name }}</md-radio-button>
+    </md-radio-group>
+
+</md-content>
+
+<div layout="row" layout-align="center center" ng-show="vm.hideLoader && vm.showError" flex>
+    <div>
+        <h3 class="neutral-warning-text">
+            <md-icon md-svg-icon="warning"></md-icon>
+            Oops! Please try again.
+        </h3>
+        <p class="center-text">
+            <a href="javascript:void(0);" class="error-link" ng-click="vm.showErrorDialog()">Show error</a>
+        </p>
+    </div>
 </div>
