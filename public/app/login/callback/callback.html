@@ -1,14 +1,18 @@
 <md-toolbar layout="row" layout-align="center center">
-    <a class="logo-link" ui-sref="step1">SlackInspector</a>
+    <a class="logo-link" ui-sref="main.step1">SlackInspector</a>
 </md-toolbar>
 
 
 <div flex layout="row">
     <div flex layout="column">
-        <md-content class="content" flex>
 
-            <p>Callback Page</p>
+        <div layout="row" layout-sm="column" layout-align="center center" ng-hide="vm.hideLoader" flex>
+            <md-progress-circular md-mode="indeterminate" md-diameter="70"></md-progress-circular>
+        </div>
 
+        <md-content class="content" ng-show="vm.hideLoader" flex>
+            <p>{{ vm.errorMessage }}</p>
+            <p>You will be redirected to the login in {{ vm.counter }} seconds.</p>
         </md-content>
     </div>
 </div>
