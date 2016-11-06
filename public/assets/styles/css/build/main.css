@@ -9,3 +9,8 @@
     color: #265C83; }
   .link:hover, .link:active {
     color: #007BE6; }
+
+.basic-footer {
+  border-top: 1px solid #ddd; }
+  .basic-footer a {
+    margin-right: 10px; }
