@@ -75,7 +75,10 @@ function setupAnalysis(token, channel, saveUsageData, res) {
                 }
                 else {
                     if (messages.length === 0) {
-                        return res.status(500).json({ ok: false, error_type: 'internal', error: 'there are no messages to analyze' });
+                        return res.status(500).json({
+                            ok: false, error_type: 'internal',
+                            error: 'there are no messages to analyze'
+                        });
                     }
 
                     //todo perform statistical analysis
