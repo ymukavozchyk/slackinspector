@@ -1,9 +1,9 @@
 'use strict';
 
 var mongoose = require('mongoose');
-var schema = mongoose.Schema;
+var Schema = mongoose.Schema;
 
-var toneDataSchema = new schema({
+var toneDataSchema = new Schema({
     category_id: String,
     category_name: String,
     tones: [

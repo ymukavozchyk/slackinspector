@@ -21,7 +21,7 @@ function setupAnalysis(token, channel, saveUsageData, res) {
         if (fromTs !== null) {
             url += '&oldest=' + fromTs;
             if (toTs === null) {
-                url += '&latest=' + ((new Date).getTime() + 60 * 30);
+                url += '&latest=' + ((new Date()).getTime() + 60 * 30);
             }
         }
 
@@ -84,4 +84,4 @@ function setupAnalysis(token, channel, saveUsageData, res) {
             });
         });
     };
-};
+}
