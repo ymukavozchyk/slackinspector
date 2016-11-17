@@ -30,7 +30,7 @@ function storeTone(toneResult) {
     });
 
     ToneData.collection.insert(tonesToInsert);
-};
+}
 
 function toneAggregation(res) {
     ToneData.aggregate([
@@ -63,8 +63,11 @@ function toneAggregation(res) {
         }
     ], function (err, aggregationResult) {
         if (err) {
-            return res.status(500).json({ ok: false, error_type: 'internal', error: 'was not able to aggregate tone data' });
+            return res.status(500).json({
+                ok: false, error_type: 'internal',
+                error: 'was not able to aggregate tone data'
+            });
         }
         return res.json({ ok: true, result: aggregationResult });
     });
-};
+}
