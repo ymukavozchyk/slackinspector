@@ -5,8 +5,8 @@
         .module('app.main.step2')
         .controller('Step2Controller', Step2Controller);
 
-    Step2Controller.$inject = ['$scope', '$mdDialog', '$state', 'SharedService'];
-    function Step2Controller($scope, $mdDialog, $state, SharedService) {
+    Step2Controller.$inject = ['$scope', '$state', 'SharedService'];
+    function Step2Controller($scope, $state, SharedService) {
         var vm = this;
 
         vm.today = new Date();
@@ -28,19 +28,6 @@
                 $state.go('main.step1');
             }
             SharedService.resetStep2();
-        }
-
-        function showErrorDialog(type, message) {
-            var errorTitle = 'Error from ' + type;
-            $mdDialog.show(
-                $mdDialog.alert()
-                    .clickOutsideToClose(false)
-                    .escapeToClose(false)
-                    .title(errorTitle)
-                    .textContent(message)
-                    .ariaLabel(errorTitle)
-                    .ok('Ok')
-            );
         }
 
         $scope.$watch('vm.fromDate', function (newValue, oldValue) {
