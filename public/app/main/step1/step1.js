@@ -52,7 +52,7 @@
         vm.goToStep2 = function () {
             var selectedChannel = vm.channels[vm.selectedChannelIndex];
             if (selectedChannel !== undefined) {
-                SharedService.setSelectedChannel(selectedChannel);
+                SharedService.setStep1Settings(selectedChannel);
                 $state.go('main.step2');
             }
             else {
