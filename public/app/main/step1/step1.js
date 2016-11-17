@@ -51,15 +51,8 @@
 
         vm.goToStep2 = function () {
             var selectedChannel = vm.channels[vm.selectedChannelIndex];
-            if (selectedChannel !== undefined) {
-                SharedService.setStep1Settings(selectedChannel);
-                $state.go('main.step2');
-            }
-            else {
-                vm.errorType = 'client';
-                vm.errorMessage = 'Was not able to get selected channel';
-                vm.showErrorDialog();
-            }
+            SharedService.setStep1Settings(selectedChannel);
+            $state.go('main.step2');
         };
     }
 })();

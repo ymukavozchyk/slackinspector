@@ -2,7 +2,7 @@
     <md-progress-circular md-mode="indeterminate" md-diameter="70"></md-progress-circular>
 </div>
 
-<md-content layout="column" layout-align="center center" ng-show="vm.hideLoader" ng-class="{ flex: vm.hideLoader && !vm.showError }">
+<md-content layout="column" layout-align="center center" ng-show="vm.hideLoader && !vm.showError" ng-class="{ flex: vm.hideLoader && !vm.showError }">
 
     <md-radio-group ng-model="vm.selectedChannelIndex">
         <md-radio-button ng-repeat="channel in vm.channels" value="{{ $index }}" class="md-primary">#{{ channel.name }}</md-radio-button>
