@@ -62,6 +62,10 @@
             }
         });
 
+        vm.goToStep1 = function(){
+            $state.go('main.step1');
+        };
+
         vm.goToAnalysis = function () {
             var tempFromDate = vm.fromDate;
             var tempToDate = vm.toDate;
@@ -73,6 +77,7 @@
                 tempToDate = null;
             }
             SharedService.setStep2Settings(vm.mode, tempFromDate, tempToDate);
+            //todo goto result
         };
     }
 })();

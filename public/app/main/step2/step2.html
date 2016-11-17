@@ -28,7 +28,7 @@
     </div>
 
     <div layout="row" layout-align="space-between center">
-        <md-button class="md-raised" aria-label="Back">Back</md-button>
+        <md-button ng-click="vm.goToStep1()" class="md-raised" aria-label="Back">Back</md-button>
         <md-button ng-disabled="vm.mode === 'range' && !vm.fromCheck && !vm.toCheck" ng-click="vm.goToAnalysis()" class="md-raised md-primary" aria-label="Next">Next</md-button>
     </div>
 
