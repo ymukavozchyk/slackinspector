@@ -2,8 +2,5 @@
     'use strict';
 
     angular
-        .module('app.main.step2',
-        [
-            'ngMessages'
-        ]);
+        .module('app.main.step2', []);
 })();
