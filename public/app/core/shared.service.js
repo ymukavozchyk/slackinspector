@@ -8,14 +8,16 @@
     function SharedService() {
 
         var step1Settings = {
-            selectedChannel: null
+            selectedChannelId: null
         };
 
         var step2Settings = {
-            selectedMode: null,
             dateFrom: null,
-            dateTo: null
+            dateTo: null,
+            shareData: false
         };
+
+        var step2VerificationFlag = false;
 
         var service = {
             verifyStep1: verifyStep1,
@@ -32,7 +34,7 @@
         return service;
 
         function verifyStep1() {
-            if (step1Settings.selectedChannel !== null) {
+            if (step1Settings.selectedChannelId !== null) {
                 return true;
             }
             return false;
@@ -42,24 +44,17 @@
             return step1Settings;
         }
 
-        function setStep1Settings(newChannel) {
-            step1Settings.selectedChannel = newChannel;
+        function setStep1Settings(newChannelId) {
+            step1Settings.selectedChannelId = newChannelId;
         }
 
         function resetStep1() {
-            step1Settings.selectedChannel = null;
+            step1Settings.selectedChannelId = null;
         }
 
         function verifyStep2() {
-            if (step2Settings.selectedMode !== null) {
-                if (step2Settings.selectedMode === 'range') {
-                    if (step2Settings.dateFrom !== null || step2Settings.dateTo !== null) {
-                        return true;
-                    }
-                }
-                else {
-                    return true;
-                }
+            if (step2VerificationFlag) {
+                return true;
             }
             return false;
         }
@@ -68,16 +63,18 @@
             return step2Settings;
         }
 
-        function setStep2Settings(newSelectedMode, newDateFrom, newDateTo) {
-            step2Settings.selectedMode = newSelectedMode;
+        function setStep2Settings(newDateFrom, newDateTo, newShareDataFlag) {
             step2Settings.dateFrom = newDateFrom;
             step2Settings.dateTo = newDateTo;
+            step2Settings.shareData = newShareDataFlag;
+            step2VerificationFlag = true;
         }
 
         function resetStep2() {
-            step2Settings.selectedMode = null;
             step2Settings.dateFrom = null;
             step2Settings.dateTo = null;
+            step2Settings.shareData = false;
+            step2VerificationFlag = false;
         }
     }
 })();

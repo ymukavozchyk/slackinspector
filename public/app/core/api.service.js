@@ -10,7 +10,8 @@
         var service = {
             login: login,
             logout: logout,
-            getChannels: getChannels
+            getChannels: getChannels,
+            performAnalysis: performAnalysis
         };
 
         return service;
@@ -31,6 +32,10 @@
             return $http.post('/api/core/channels', {
                 encrypted_token: token
             });
+        }
+
+        function performAnalysis(params){
+            return $http.post('/api/core/analysis', params);
         }
     }
 })();

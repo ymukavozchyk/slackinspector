@@ -1,13 +1,13 @@
 <md-content layout="column" layout-align="center center" flex>
 
-    <div layout="column" layout-align "center center">
+    <div layout="column" layout-align "center center" ng-class="{ step2_options_small: $mdMedia('xs') || $mdMedia('sm') }">
 
         <md-radio-group ng-model="vm.mode">
             <md-radio-button value="all" class="md-primary">All</md-radio-button>
             <md-radio-button value="range" class="md-primary">Selected</md-radio-button>
         </md-radio-group>
 
-        <div style="margin-left:2em;" layout="column">
+        <div class="date-options" layout="column">
 
             <div>
                 <md-checkbox ng-model="vm.fromCheck" ng-disabled="vm.mode == 'all'" md-no-ink aria-label="From" class="md-primary">
@@ -20,16 +20,22 @@
                 <md-checkbox ng-model="vm.toCheck" ng-disabled="vm.mode == 'all'" md-no-ink aria-label="To" class="md-primary">
                     To
                 </md-checkbox>
-                <md-datepicker ng-model="vm.toDate" md-min-date="vm.minDate" md-max-date="vm.today" ng-disabled="vm.mode == 'all' || !vm.toCheck" md-placeholder="Enter date"></md-datepicker>
+                <md-datepicker ng-model="vm.toDate" md-min-date="vm.minDate" md-max-date="vm.today" ng-disabled="vm.mode == 'all' || !vm.toCheck"
+                    md-placeholder="Enter date"></md-datepicker>
             </div>
 
         </div>
+
+        <md-checkbox ng-model="vm.shareDataFlag" md-no-ink class="md-primary">
+            Yes, I would like to share my anonymous analysis results with SlackInspector.
+        </md-checkbox>
 
     </div>
 
     <div layout="row" layout-align="space-between center">
         <md-button ng-click="vm.goToStep1()" class="md-raised" aria-label="Back">Back</md-button>
-        <md-button ng-disabled="vm.mode === 'range' && !vm.fromCheck && !vm.toCheck" ng-click="vm.goToAnalysis()" class="md-raised md-primary" aria-label="Next">Next</md-button>
+        <md-button ng-disabled="vm.mode === 'range' && !vm.fromCheck && !vm.toCheck" ng-click="vm.goToAnalysis()" class="md-raised md-primary"
+            aria-label="Next">Next</md-button>
     </div>
 
 </md-content>
