@@ -64,7 +64,7 @@
                 tempToDate = null;
             }
             SharedService.setStep2Settings(vm.mode, tempFromDate, tempToDate);
-            //todo goto result
+            $state.go('main.result');
         };
     }
 })();

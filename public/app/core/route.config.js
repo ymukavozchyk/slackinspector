@@ -59,6 +59,16 @@
                     protected: true
                 }
             })
+            .state('main.result', {
+                url: '/step2',
+                templateUrl: 'app/main/result/result.html',
+                controller: 'ResultController',
+                controllerAs: 'vm',
+                data: {
+                    title: 'Result',
+                    protected: true
+                }
+            })
             .state('about', {
                 url: '/about',
                 templateUrl: 'app/about/about.html',
