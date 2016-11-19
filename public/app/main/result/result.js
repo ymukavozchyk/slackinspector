@@ -5,18 +5,27 @@
         .module('app.main.result')
         .controller('ResultController', ResultController);
 
-    ResultController.$inject = ['$state', 'ApiService', 'SharedService', 'CredentialService'];
-    function ResultController($state, ApiService, SharedService, CredentialService) {
+    ResultController.$inject = ['$mdDialog', '$state', 'ApiService', 'SharedService', 'CredentialService'];
+    function ResultController($mdDialog, $state, ApiService, SharedService, CredentialService) {
         var vm = this;
+
+        vm.hideLoader = false;
+        vm.showError = false;
+        vm.errorType = '';
+        vm.errorMessage = '';
 
         activate();
 
         function activate() {
-            if (!SharedService.verifyStep2()) {
+            if (!SharedService.verifyStep1()) {
+                $state.go('main.step1');
+            }
+            else if (!SharedService.verifyStep2()) {
                 $state.go('main.step2');
             }
-
-            performAnalysis();
+            else {
+                performAnalysis();
+            }
         }
 
         function performAnalysis() {
@@ -39,11 +48,33 @@
 
             ApiService.performAnalysis(params)
                 .then(function (res) {
+                    vm.hideLoader = true;
                     console.log(res.data);
                 },
                 function (e) {
-                    console.log(e.data);
+                    vm.errorType = e.data.error_type;
+                    vm.errorMessage = e.data.error;
+                    vm.hideLoader = true;
+                    vm.showError = true;
+                    vm.showErrorDialog();
                 });
         }
+
+        vm.showErrorDialog = function () {
+            var errorTitle = 'Error from ' + vm.errorType;
+            $mdDialog.show(
+                $mdDialog.alert()
+                    .clickOutsideToClose(false)
+                    .escapeToClose(false)
+                    .title(errorTitle)
+                    .textContent(vm.errorMessage)
+                    .ariaLabel(errorTitle)
+                    .ok('Ok')
+            );
+        };
+
+        vm.goToStep2 = function () {
+            $state.go('main.step2');
+        };
     }
 })();

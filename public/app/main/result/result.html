@@ -1,1 +1,21 @@
-<h1>Result</h1>
+<div layout="row" layout-sm="column" layout-align="center center" ng-hide="vm.hideLoader" flex>
+    <md-progress-circular md-mode="indeterminate" md-diameter="70"></md-progress-circular>
+</div>
+
+<md-content layout="column" layout-align="center center" ng-show="vm.hideLoader && !vm.showError" ng-class="{ flex: vm.hideLoader && !vm.showError }">
+
+    <h1>Result</h1>
+
+</md-content>
+
+<div layout="row" layout-align="center center" ng-show="vm.hideLoader && vm.showError" flex>
+    <div>
+        <h3 class="neutral-warning-text">
+            <md-icon md-svg-icon="warning"></md-icon>
+            Oops! <a href="javascript:void(0);" class="error-link" ng-click="vm.goToStep2()">Please try again</a>
+        </h3>
+        <p class="center-text">
+            <a href="javascript:void(0);" class="error-link" ng-click="vm.showErrorDialog()">Show error</a>
+        </p>
+    </div>
+</div>
