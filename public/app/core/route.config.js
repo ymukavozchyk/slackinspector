@@ -60,7 +60,7 @@
                 }
             })
             .state('main.result', {
-                url: '/step2',
+                url: '/result',
                 templateUrl: 'app/main/result/result.html',
                 controller: 'ResultController',
                 controllerAs: 'vm',
