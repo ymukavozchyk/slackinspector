@@ -31,7 +31,9 @@
             if (!SharedService.verifyStep1()) {
                 $state.go('main.step1');
             }
-            SharedService.resetStep2();
+            else {
+                SharedService.resetStep2();
+            }
         }
 
         $scope.$watch('vm.fromDate', function (newValue, oldValue) {
@@ -53,7 +55,7 @@
             }
         });
 
-        vm.goToStep1 = function(){
+        vm.goToStep1 = function () {
             $state.go('main.step1');
         };
 
@@ -61,10 +63,10 @@
             var tempFromDate = Math.round(vm.fromDate / 1000.0);
             var tempToDate = Math.round(vm.toDate / 1000.0);
 
-            if(vm.fromCheck !== true){
+            if (vm.fromCheck !== true) {
                 tempFromDate = null;
             }
-            if(vm.toCheck !== true){
+            if (vm.toCheck !== true) {
                 tempToDate = null;
             }
             SharedService.setStep2Settings(tempFromDate, tempToDate, vm.shareDataFlag);
