@@ -49,6 +49,10 @@
             );
         };
 
+        vm.refreshPage = function(){
+            location.reload();
+        };
+
         vm.goToStep2 = function () {
             var selectedChannel = vm.channels[vm.selectedChannelIndex];
             SharedService.setStep1Settings(selectedChannel.id);
