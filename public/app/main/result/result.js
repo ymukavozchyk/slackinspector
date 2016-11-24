@@ -36,7 +36,7 @@
                 encrypted_token: CredentialService.getToken(),
                 save_usage_data: step2Settings.shareData.toString(),
                 channel: step1Settings.selectedChannelId
-            }
+            };
 
             if (step2Settings.dateFrom !== null) {
                 params.from_ts = step2Settings.dateFrom;

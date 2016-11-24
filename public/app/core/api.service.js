@@ -11,7 +11,8 @@
             login: login,
             logout: logout,
             getChannels: getChannels,
-            performAnalysis: performAnalysis
+            performAnalysis: performAnalysis,
+            getUsageStatistics: getUsageStatistics
         };
 
         return service;
@@ -36,6 +37,10 @@
 
         function performAnalysis(params){
             return $http.post('/api/core/analysis', params);
+        }
+
+        function getUsageStatistics(){
+            return $http.get('/api/core/usage/tone');
         }
     }
 })();
