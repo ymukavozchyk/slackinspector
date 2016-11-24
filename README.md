@@ -3,16 +3,23 @@ A web application which performs an analysis of messages from specific [Slack](h
 
 ### Tech Stack
 **Data layer**
-* MongoDB
+* [MongoDB](https://github.com/mongodb/mongo)
 
 **Server-side**
-* Node.js
-* Express
-* Mongoose
-* Watson Developer Cloud Node.js SDK
+* [Node.js](https://github.com/nodejs/node)
+* [Express](https://github.com/expressjs/express)
+* [Mongoose](http://mongoosejs.com/)
+* [Watson Developer Cloud Node.js SDK](https://github.com/watson-developer-cloud/node-sdk)
 
 **Client-side**
-* [**Part 1 (DEV week)**](https://github.com/ymukavozchyk/slackinspector/tree/part-1)
+* [AngularJS 1.x](https://github.com/angular/angular.js)
+* [Angular Material](https://github.com/angular/material)
+* [UI-Router](https://github.com/angular-ui/ui-router)
+* [Gulp](https://github.com/gulpjs/gulp)
+* [Bower](https://github.com/bower/bower)
+
+
+[**DEV week presentation**](https://github.com/ymukavozchyk/slackinspector/tree/part-1)
 
 ----------
 **COMP 424 - Client-Side Web Design**  
@@ -26,4 +33,4 @@ Yauheni Mukavozchyk
 ----------
 
 **License**  
-MIT
+[MIT](https://github.com/ymukavozchyk/slackinspector/blob/master/LICENSE)
