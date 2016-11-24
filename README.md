@@ -1,5 +1,5 @@
 # Slack Inspector
-## DEV week presentation
+## DEV week prototype
 An interactive high-fidelity prototype of a web application which performs an analysis of messages from specific [Slack](https://slack.com/) channel using [IBM Watson Tone Analyzer](https://www.ibm.com/watson/developercloud/tone-analyzer.html).
 
 ### Tech Stack
