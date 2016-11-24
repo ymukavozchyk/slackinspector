@@ -69,6 +69,16 @@
                     protected: true
                 }
             })
+            .state('main.usage', {
+                url: '/usage',
+                templateUrl: 'app/main/usage/usage.html',
+                controller: 'UsageController',
+                controllerAs: 'vm',
+                data: {
+                    title: 'Usage Statistics',
+                    protected: false
+                }
+            })
             .state('about', {
                 url: '/about',
                 templateUrl: 'app/about/about.html',
