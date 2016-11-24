@@ -19,7 +19,7 @@ A web application which performs an analysis of messages from specific [Slack](h
 * [Bower](https://github.com/bower/bower)
 
 
-[**DEV week presentation**](https://github.com/ymukavozchyk/slackinspector/tree/part-1)
+[**DEV week prototype**](https://github.com/ymukavozchyk/slackinspector/tree/part-1)
 
 ----------
 **COMP 424 - Client-Side Web Design**  
