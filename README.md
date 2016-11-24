@@ -1,23 +1,20 @@
 # Slack Inspector
-## Part 1 (DEV week)
+## DEV week presentation
 An interactive high-fidelity prototype of a web application which performs an analysis of messages from specific [Slack](https://slack.com/) channel using [IBM Watson Tone Analyzer](https://www.ibm.com/watson/developercloud/tone-analyzer.html).
 
 ### Tech Stack
 **Data layer**
-* MongoDB
+* [MongoDB](https://github.com/mongodb/mongo)
 
 **Server-side**
-* Node.js
-* Express
-* Mongoose
-* Watson Developer Cloud Node.js SDK
+* [Node.js](https://github.com/nodejs/node)
+* [Express](https://github.com/expressjs/express)
+* [Mongoose](http://mongoosejs.com/)
+* [Watson Developer Cloud Node.js SDK](https://github.com/watson-developer-cloud/node-sdk)
 
 **Client-side**
-* HTML5
-* CSS3
-* JS (ES5)
-* jQuery
-* Chart.js
+* [jQuery](https://github.com/jquery/jquery)
+* [Chart.js](https://github.com/chartjs/Chart.js)
 
 ----------
 **COMP 424 - Client-Side Web Design**  
@@ -31,4 +28,4 @@ Yauheni Mukavozchyk
 ----------
 
 **License**  
-MIT
+[MIT](https://github.com/ymukavozchyk/slackinspector/blob/master/LICENSE)
