@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.about')
+        .module('app.main.about')
         .controller('AboutController', AboutController);
 
     function AboutController() {

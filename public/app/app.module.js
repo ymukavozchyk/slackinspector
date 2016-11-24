@@ -13,6 +13,6 @@
             'app.main.step2',
             'app.main.result',
             'app.main.usage',
-            'app.about'
+            'app.main.about'
         ]);
 })();

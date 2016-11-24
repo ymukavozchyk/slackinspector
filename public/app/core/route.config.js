@@ -79,9 +79,9 @@
                     protected: false
                 }
             })
-            .state('about', {
+            .state('main.about', {
                 url: '/about',
-                templateUrl: 'app/about/about.html',
+                templateUrl: 'app/main/about/about.html',
                 controller: 'AboutController',
                 controllerAs: 'vm',
                 data: {
