@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -44,7 +44,7 @@
         }
 
         function checkCallbackRoute(toState, toParams, event) {
-            if (toState.name === 'callback') {
+            if (toState.name === 'main.callback') {
                 var redirectFlag = false;
 
                 if (CredentialService.isTokenPresent()) {
@@ -66,13 +66,13 @@
             }
         }
 
-        $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+        $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
             checkProtectedRoutes(toState, event);
             checkSpecificRoutes(toState, event);
             checkCallbackRoute(toState, toParams, event);
         });
 
-        $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+        $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
             $rootScope.pageTitle = toState.data.title;
         });
     }
