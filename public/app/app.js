@@ -13,7 +13,7 @@
 
         function activate() {
             if (!CredentialService.isTokenPresent()) {
-                $state.go('login');
+                $state.go('main.login');
             }
             else {
                 $state.go('main.step1');
@@ -28,13 +28,13 @@
         function checkProtectedRoutes(toState, event) {
             if (toState.data.protected) {
                 if (!CredentialService.isTokenPresent()) {
-                    preventAndGo('login', event);
+                    preventAndGo('main.login', event);
                 }
             }
         }
 
         function checkSpecificRoutes(toState, event) {
-            if (toState.name === 'login' && CredentialService.isTokenPresent()) {
+            if (toState.name === 'main.login' && CredentialService.isTokenPresent()) {
                 preventAndGo('main.step1', event);
             }
 

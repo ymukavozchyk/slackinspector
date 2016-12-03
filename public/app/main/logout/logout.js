@@ -24,7 +24,7 @@
                 .then(function () {
                     CredentialService.resetToken();
                     $mdDialog.cancel();
-                    $state.go('login');
+                    $state.go('main.login');
                 },
                 function (e) {
                     $mdDialog.hide({

@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.login')
+        .module('app.main.login')
         .controller('LoginController', LoginController);
 
     LoginController.$inject = ['CredentialService'];

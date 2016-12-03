@@ -5,9 +5,9 @@
         .module('app',
         [
             'app.core',
-            'app.login',
-            'app.login.callback',
             'app.main',
+            'app.main.login',
+            'app.main.login.callback',
             'app.main.logout',
             'app.main.step1',
             'app.main.step2',

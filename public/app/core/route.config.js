@@ -9,26 +9,6 @@
 
     function RouteConfig($stateProvider) {
         $stateProvider
-            .state('login', {
-                url: '/login',
-                templateUrl: 'app/login/login.html',
-                controller: 'LoginController',
-                controllerAs: 'vm',
-                data: {
-                    title: 'Login',
-                    protected: false
-                }
-            })
-            .state('callback', {
-                url: '/login/callback?code&state',
-                templateUrl: 'app/login/callback/callback.html',
-                controller: 'CallbackController',
-                controllerAs: 'vm',
-                data: {
-                    title: 'Callback',
-                    protected: false
-                }
-            })
             .state('main', {
                 url: '/main',
                 templateUrl: 'app/main//main.html',
@@ -37,6 +17,26 @@
                 data: {
                     title: 'Main',
                     protected: true
+                }
+            })
+            .state('main.login', {
+                url: '/login',
+                templateUrl: 'app/main/login/login.html',
+                controller: 'LoginController',
+                controllerAs: 'vm',
+                data: {
+                    title: 'Login',
+                    protected: false
+                }
+            })
+            .state('main.callback', {
+                url: '/login/callback?code&state',
+                templateUrl: 'app/main/login/callback/callback.html',
+                controller: 'CallbackController',
+                controllerAs: 'vm',
+                data: {
+                    title: 'Callback',
+                    protected: false
                 }
             })
             .state('main.step1', {
