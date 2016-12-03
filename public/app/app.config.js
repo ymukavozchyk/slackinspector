@@ -9,6 +9,8 @@
 
     function AppConfig($mdIconProvider) {
         $mdIconProvider
-            .icon('warning', './assets/images/svg/warning.svg', 24);
+            .icon('warning', './assets/images/svg/warning.svg', 24)
+            .icon('menu', './assets/images/svg/menu.svg', 24)
+            .icon('logout', './assets/images/svg/logout.svg', 24);
     }
 })();

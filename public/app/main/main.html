@@ -1,11 +1,38 @@
 <md-toolbar layout="row" layout-align="center center">
-    <md-button class="md-raised" ui-sref="main.usage" aria-label="Usage Statistics">Usage Statistics</md-button>
+    <md-button class="md-icon-button" ng-click="vm.openMenu()" aria-label="Open menu">
+        <md-icon md-svg-icon="menu"></md-icon>
+        <md-tooltip>Open menu</md-tooltip>
+    </md-button>
     <span flex></span>
     <a class="logo-link" ui-sref="main.step1">SlackInspector</a>
     <span flex></span>
-    <md-button ng-show="vm.showLogOut" ng-click="vm.logOut($event)" class="md-raised" aria-label="Log Out">Log Out</md-button>
+    <md-button class="md-icon-button" ng-show="vm.showLogOut" ng-click="vm.logOut($event)" aria-label="Log out">
+        <md-icon md-svg-icon="logout"></md-icon>
+        <md-tooltip>Log out</md-tooltip>
+    </md-button>
 </md-toolbar>
 
 <div ui-view flex layout="row"></div>
+
+<md-sidenav md-component-id="left" class="md-whiteframe-z2">
+    <md-toolbar>
+        <div layout="row" layout-align="right center">
+            <md-button class="md-icon-button" ng-click="vm.closeMenu()" aria-label="Close menu">
+                <md-icon md-svg-icon="menu"></md-icon>
+                <md-tooltip>Close menu</md-tooltip>
+            </md-button>
+            <h1 class="md-toolbar-tools">Menu</h1>
+        </div>
+    </md-toolbar>
+
+    <md-list>
+        <md-list-item ng-click="vm.changeStateFromMenu('main.step1')">
+            <h3>Tone Analysis</h3>
+        </md-list-item>
+        <md-list-item ng-click="vm.changeStateFromMenu('main.usage')">
+            <h3>Usage Statistics</h3>
+        </md-list-item>
+    </md-list>
+</md-sidenav>
 
 <div ng-include="'app/partials/footer/footer.html'"></div>

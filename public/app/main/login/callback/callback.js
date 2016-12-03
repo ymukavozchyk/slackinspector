@@ -5,8 +5,8 @@
         .module('app.main.login.callback')
         .controller('CallbackController', CallbackController);
 
-    CallbackController.$inject = ['$state', '$stateParams', '$mdDialog', 'CredentialService', 'ApiService'];
-    function CallbackController($state, $stateParams, $mdDialog, CredentialService, ApiService) {
+    CallbackController.$inject = ['$rootScope', '$state', '$stateParams', '$mdDialog', 'CredentialService', 'ApiService'];
+    function CallbackController($rootScope, $state, $stateParams, $mdDialog, CredentialService, ApiService) {
         var vm = this;
 
         vm.hideLoader = false;
@@ -18,6 +18,9 @@
                 .then(function (res) {
                     CredentialService.setToken(res.data.encrypted_token);
                     CredentialService.resetState();
+                    $rootScope.$broadcast('show-log-out', {
+                        value: true
+                    });
                     $state.go('main.step1');
                 },
                 function (e) {

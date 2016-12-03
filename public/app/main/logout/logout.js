@@ -5,8 +5,8 @@
         .module('app.main.logout')
         .controller('LogoutController', LogoutController);
 
-    LogoutController.$inject = ['$mdDialog', '$state', 'CredentialService', 'ApiService'];
-    function LogoutController($mdDialog, $state, CredentialService, ApiService) {
+    LogoutController.$inject = ['$rootScope', '$mdDialog', '$state', 'CredentialService', 'ApiService'];
+    function LogoutController($rootScope, $mdDialog, $state, CredentialService, ApiService) {
         var vm = this;
 
         vm.hideProgressBar = true;
@@ -24,6 +24,9 @@
                 .then(function () {
                     CredentialService.resetToken();
                     $mdDialog.cancel();
+                    $rootScope.$broadcast('show-log-out', {
+                        value: false
+                    });
                     $state.go('main.login');
                 },
                 function (e) {
