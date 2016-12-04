@@ -1,10 +1,21 @@
-<md-content layout="column" layout-align="center center" flex>
+<md-content class="content-section" layout="column" layout-align="center center" flex>
 
-    <div layout="column" layout-align "center center" ng-class="{ step2_options_small: $mdMedia('xs') || $mdMedia('sm') }">
+    <h1>Tone Analysis</h1>
+    <h2>Step 2 of 2</h2>
+
+    <p class="content-text-block text-center">
+        Select analysis options
+    </p>
+
+    <p class="content-text-block text-center">
+        <b>#channel</b>
+    </p>
+
+    <div class="options-section" layout="column" layout-align "center center" ng-class="{ step2_options_small: $mdMedia('xs') || $mdMedia('sm') }">
 
         <md-radio-group ng-model="vm.mode">
-            <md-radio-button value="all" class="md-primary">All</md-radio-button>
-            <md-radio-button value="range" class="md-primary">Selected</md-radio-button>
+            <md-radio-button value="all" class="md-primary">All messages</md-radio-button>
+            <md-radio-button value="range" class="md-primary">Messages in date range</md-radio-button>
         </md-radio-group>
 
         <div class="date-options" layout="column">
