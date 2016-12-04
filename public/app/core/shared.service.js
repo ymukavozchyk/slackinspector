@@ -8,12 +8,13 @@
     function SharedService() {
 
         var step1Settings = {
-            selectedChannelId: null
+            selectedChannelName: undefined,
+            selectedChannelId: undefined
         };
 
         var step2Settings = {
-            dateFrom: null,
-            dateTo: null,
+            dateFrom: undefined,
+            dateTo: undefined,
             shareData: false
         };
 
@@ -34,7 +35,8 @@
         return service;
 
         function verifyStep1() {
-            if (step1Settings.selectedChannelId !== null) {
+            if (step1Settings.selectedChannelId !== undefined
+                && step1Settings.selectedChannelName !== undefined) {
                 return true;
             }
             return false;
@@ -44,12 +46,14 @@
             return step1Settings;
         }
 
-        function setStep1Settings(newChannelId) {
+        function setStep1Settings(newChannelId, newChannelName) {
             step1Settings.selectedChannelId = newChannelId;
+            step1Settings.selectedChannelName = newChannelName;
         }
 
         function resetStep1() {
-            step1Settings.selectedChannelId = null;
+            step1Settings.selectedChannelId = undefined;
+            step1Settings.selectedChannelName = undefined;
         }
 
         function verifyStep2() {
@@ -71,8 +75,8 @@
         }
 
         function resetStep2() {
-            step2Settings.dateFrom = null;
-            step2Settings.dateTo = null;
+            step2Settings.dateFrom = undefined;
+            step2Settings.dateTo = undefined;
             step2Settings.shareData = false;
             step2VerificationFlag = false;
         }

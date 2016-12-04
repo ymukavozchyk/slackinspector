@@ -55,7 +55,8 @@
 
         vm.goToStep2 = function () {
             var selectedChannel = vm.channels[vm.selectedChannelIndex];
-            SharedService.setStep1Settings(selectedChannel.id);
+            console.log(selectedChannel);
+            SharedService.setStep1Settings(selectedChannel.id, selectedChannel.name);
             $state.go('main.step2');
         };
     }

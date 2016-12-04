@@ -11,6 +11,8 @@
 
         $scope.$mdMedia = $mdMedia;
 
+        vm.selectedChannel = '#';
+
         vm.today = new Date();
 
         vm.mode = 'all';
@@ -33,6 +35,8 @@
             }
             else {
                 SharedService.resetStep2();
+                var step1Settings = SharedService.getStep1Settings();
+                vm.selectedChannel += step1Settings.selectedChannelName;
             }
         }
 
