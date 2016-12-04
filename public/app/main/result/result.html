@@ -3,9 +3,8 @@
 </div>
 
 <md-content layout="column" layout-align="center center" ng-show="vm.hideLoader && !vm.showError" ng-class="{ flex: vm.hideLoader && !vm.showError }">
-
     <h1>Result</h1>
-
+    <div ng-include="'app/partials/tone-chart.html'"></div>
 </md-content>
 
 <div layout="row" layout-align="center center" ng-show="vm.hideLoader && vm.showError" flex>

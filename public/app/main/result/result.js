@@ -14,6 +14,10 @@
         vm.errorType = '';
         vm.errorMessage = '';
 
+        vm.languageTones = [];
+        vm.emotionTones = [];
+        vm.socialTones = [];
+
         activate();
 
         function activate() {
@@ -48,16 +52,57 @@
 
             ApiService.performAnalysis(params)
                 .then(function (res) {
-                    vm.hideLoader = true;
-                    console.log(res.data);
+                    console.log('mcount: ' + res.data.message_count);
+                    var processingErrorFlag = false;
+
+                    res.data.tone.document_tone.tone_categories.forEach(function (toneSection) {
+                        toneSection.tones.forEach(function (tone) {
+                            var score = tone.score;
+                            if (score > 1) {
+                                score = 1;
+                            }
+                            score = score.toFixed(2);
+
+                            var toneObj = {
+                                name: tone.tone_name,
+                                score: score,
+                                style: { width: (score * 100) + '%' }
+                            };
+
+                            switch (toneSection.category_id) {
+                                case 'language_tone':
+                                    vm.languageTones.push(toneObj);
+                                    break;
+                                case 'emotion_tone':
+                                    vm.emotionTones.push(toneObj);
+                                    break;
+                                case 'social_tone':
+                                    vm.socialTones.push(toneObj);
+                                    break;
+                                default:
+                                    processingErrorFlag = true;
+                            }
+                        });
+                    });
+
+                    if (processingErrorFlag === true) {
+                        formErrorMessage('Client', 'Was not able to parse tone analysis data');
+                    }
+                    else {
+                        vm.hideLoader = true;
+                    }
                 },
                 function (e) {
-                    vm.errorType = e.data.error_type;
-                    vm.errorMessage = e.data.error;
-                    vm.hideLoader = true;
-                    vm.showError = true;
-                    vm.showErrorDialog();
+                    formErrorMessage(e.data.error_type, e.data.error);
                 });
+        }
+
+        function formErrorMessage(errorType, errorMessage) {
+            vm.errorType = errorType;
+            vm.errorMessage = errorMessage;
+            vm.hideLoader = true;
+            vm.showError = true;
+            vm.showErrorDialog();
         }
 
         vm.showErrorDialog = function () {
