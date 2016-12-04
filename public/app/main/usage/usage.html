@@ -6,6 +6,61 @@
 
     <h1>Usage Statistics</h1>
 
+    <div layout="row" layout-sm="column" layout-xs="column">
+
+        <md-whiteframe class="md-whiteframe-4dp tone-chart-container emotion-container-spacing">
+            <h3>Emotion</h3>
+            <div ng-repeat="tone in vm.emotionTones">
+                <div class="tone-bar-container">
+                    <div class="regular-tone-title">
+                        <span>{{ tone.name }}</span>
+                    </div>
+                    <div class="tone-bar">
+                        <div class="tone-track">
+                            <div class="tone-fill emotion-tone-fill" ng-style="tone.style"></div>
+                        </div>
+                    </div>
+                    <span>{{ tone.score }}</span>
+                </div>
+            </div>
+        </md-whiteframe>
+
+        <md-whiteframe class="md-whiteframe-4dp tone-chart-container language-container-spacing">
+            <h3>Language Style</h3>
+            <div ng-repeat="tone in vm.languageTones">
+                <div class="tone-bar-container">
+                    <div class="regular-tone-title">
+                        <span>{{ tone.name }}</span>
+                    </div>
+                    <div class="tone-bar">
+                        <div class="tone-track">
+                            <div class="tone-fill language-tone-fill" ng-style="tone.style"></div>
+                        </div>
+                    </div>
+                    <span>{{ tone.score }}</span>
+                </div>
+            </div>
+        </md-whiteframe>
+
+        <md-whiteframe class="md-whiteframe-4dp tone-chart-container social-container-spacing">
+            <h3>Social Tendencies</h3>
+            <div ng-repeat="tone in vm.socialTones">
+                <div class="tone-bar-container">
+                    <div class="large-tone-title">
+                        <span>{{ tone.name }}</span>
+                    </div>
+                    <div class="tone-bar">
+                        <div class="tone-track">
+                            <div class="tone-fill social-tone-fill" ng-style="tone.style"></div>
+                        </div>
+                    </div>
+                    <span>{{ tone.score }}</span>
+                </div>
+            </div>
+        </md-whiteframe>
+
+    </div>
+
 </md-content>
 
 <div layout="row" layout-align="center center" ng-show="vm.hideLoader && vm.showError" flex>
