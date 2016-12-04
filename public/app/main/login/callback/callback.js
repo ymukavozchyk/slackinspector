@@ -5,7 +5,8 @@
         .module('app.main.login.callback')
         .controller('CallbackController', CallbackController);
 
-    CallbackController.$inject = ['$rootScope', '$state', '$stateParams', '$mdDialog', 'CredentialService', 'ApiService'];
+    CallbackController.$inject = ['$rootScope', '$state', '$stateParams',
+        '$mdDialog', 'CredentialService', 'ApiService'];
     function CallbackController($rootScope, $state, $stateParams, $mdDialog, CredentialService, ApiService) {
         var vm = this;
 
