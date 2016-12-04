@@ -11,7 +11,7 @@
         Select Slack channel for analysis
     </p>
 
-    <md-radio-group class="options-section" ng-model="vm.selectedChannelIndex">
+    <md-radio-group class="channel-options" ng-model="vm.selectedChannelIndex">
         <md-radio-button ng-repeat="channel in vm.channels" value="{{ $index }}" class="md-primary">#{{ channel.name }}</md-radio-button>
     </md-radio-group>
 
