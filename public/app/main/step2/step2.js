@@ -5,11 +5,9 @@
         .module('app.main.step2')
         .controller('Step2Controller', Step2Controller);
 
-    Step2Controller.$inject = ['$scope', '$state', '$mdMedia', 'SharedService'];
-    function Step2Controller($scope, $state, $mdMedia, SharedService) {
+    Step2Controller.$inject = ['$scope', '$state', 'SharedService'];
+    function Step2Controller($scope, $state, SharedService) {
         var vm = this;
-
-        $scope.$mdMedia = $mdMedia;
 
         vm.selectedChannel = '#';
 

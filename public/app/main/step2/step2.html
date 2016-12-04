@@ -11,7 +11,7 @@
         <b>{{ vm.selectedChannel }}</b>
     </p>
 
-    <div class="range-options" layout="column" layout-align "center center" ng-class="{ step2_options_small: $mdMedia('xs') || $mdMedia('sm') }">
+    <div class="range-options" layout="column" layout-align "center center">
 
         <md-radio-group ng-model="vm.mode">
             <md-radio-button value="all" class="md-primary">All messages</md-radio-button>
@@ -19,7 +19,6 @@
         </md-radio-group>
 
         <div class="date-options" layout="column">
-
             <div>
                 <md-checkbox ng-model="vm.fromCheck" ng-disabled="vm.mode == 'all'" md-no-ink aria-label="From" class="md-primary">
                     From
@@ -34,10 +33,9 @@
                 <md-datepicker ng-model="vm.toDate" md-min-date="vm.minDate" md-max-date="vm.today" ng-disabled="vm.mode == 'all' || !vm.toCheck"
                     md-placeholder="Enter date"></md-datepicker>
             </div>
-
         </div>
 
-        <md-checkbox ng-model="vm.shareDataFlag" md-no-ink class="md-primary">
+        <md-checkbox ng-model="vm.shareDataFlag" md-no-ink class="md-primary share-check">
             Yes, I would like to share my anonymous analysis results with SlackInspector.
         </md-checkbox>
 

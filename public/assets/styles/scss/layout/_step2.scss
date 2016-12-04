@@ -1,3 +1,16 @@
 .range-options {
     margin-bottom: 30px;
+    @media (max-width: 960px){
+        margin-left: 3em;
+    }
+}
+
+.date-options {
+  margin: 0 0 2em 2em;
+}
+
+.share-check {
+    @media (max-width: 960px){
+        margin-top: 5em;
+    }
 }
