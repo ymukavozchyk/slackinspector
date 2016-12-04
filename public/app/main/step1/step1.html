@@ -2,9 +2,16 @@
     <md-progress-circular md-mode="indeterminate" md-diameter="70"></md-progress-circular>
 </div>
 
-<md-content layout="column" layout-align="center center" ng-show="vm.hideLoader && !vm.showError" ng-class="{ flex: vm.hideLoader && !vm.showError }">
+<md-content class="content-section" layout="column" layout-align="center center" ng-show="vm.hideLoader && !vm.showError" ng-class="{ flex: vm.hideLoader && !vm.showError }">
 
-    <md-radio-group ng-model="vm.selectedChannelIndex">
+    <h1>Tone Analysis</h1>
+    <h2>Step 1 of 2</h2>
+
+    <p class="content-text-block text-center">
+        Select Slack channel for analysis
+    </p>
+
+    <md-radio-group class="options-section" ng-model="vm.selectedChannelIndex">
         <md-radio-button ng-repeat="channel in vm.channels" value="{{ $index }}" class="md-primary">#{{ channel.name }}</md-radio-button>
     </md-radio-group>
 
