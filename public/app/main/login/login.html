@@ -1,8 +1,25 @@
-<md-content class="content" flex>
+<md-content layout="column" layout-align="center center" flex>
 
-    <a ng-href="{{ vm.loginHref }}">
+    <h1>Authorization</h1>
+
+    <p class="content-text-block text-center">
+        In order to perform tone analysis you need to authorize <b>SlackInspector</b> with <a class="link" target="_blank" href="https://slack.com/">Slack</a>.
+    </p>
+
+    <a class="slack-button" ng-href="{{ vm.loginHref }}">
         <img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x"
         />
     </a>
+
+    <h3>What is SlackInspector?</h3>
+    <p class="content-text-block">
+        <b>SlackInspector</b> is an open-source web application which allows you
+        to peform a linguistic analysis of messages from specific <a class="link" target="_blank" href="https://slack.com/">Slack</a> channel with
+        <a class="link" target="_blank" href="https://www.ibm.com/watson/developercloud/tone-analyzer.html">IBM Watson Tone Analyzer</a>.
+        SlackInspector <b>does not collect</b> any sensitive information.
+    </p>
+    <p class="content-text-block text-center">
+        You can read more about it <a class="link" target="_blank" ui-sref="main.about">here</a>.
+    </p>
 
 </md-content>
