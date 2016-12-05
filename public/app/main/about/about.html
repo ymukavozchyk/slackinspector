@@ -1,5 +1,46 @@
-<div flex layout="column">
-    <md-content class="content" flex>
-        <p>{{ vm.data }}</p>
-    </md-content>
-</div>
+<md-content class="content-section" layout="column" layout-align="center center" flex>
+    <h1>About</h1>
+
+    <h2>What is SlackInspector?</h2>
+    <p class="content-text-block">
+        <b>SlackInspector</b> is an open-source web application which allows you to perform a linguistic analysis of messages
+        from specific <a class="link" target="_blank" href="https://slack.com/">Slack</a> channel with
+        <a class="link" target="_blank" href="https://www.ibm.com/watson/developercloud/tone-analyzer.html">IBM Watson Tone Analyzer</a>.
+        Analysis will help to detect emotional tones, social propensities, and writing styles in written communication.
+    </p>
+
+    <h2>How it works</h2>
+    <p class="content-text-block">
+        <b>SlackInspector</b> consumes <a class="link" target="_blank" href="https://api.slack.com/">Slack API</a> to fetch the
+        messages from selected channel from authorized Slack team and
+        <a class="link" target="_blank" href="https://www.ibm.com/watson/developercloud/tone-analyzer/api/v3/">IBM Watson Tone Analyzer API</a>
+        to perform a linguistic analysis of fetched messages.
+    </p>
+
+    <h2>Slack Authorization</h2>
+    <p class="content-text-block">
+        In order to perform a linguistic analysis you need to authorize <b>SlackInspector</b> application with Slack.
+        App requires permission to get a list of channels from authorized team and access channel message history.
+        Requested OAuth scopes are <b><i>channels:read</i></b> and <b><i>channels:history</i></b>.
+        You can read more about Slack API OAuth Scopes <a class="link" target="_blank" href="https://api.slack.com/docs/oauth-scopes">here</a>.
+    </p>
+
+    <h2>Privacy</h2>
+    <p class="content-text-block">
+        <b>SlackInspector does not collect or store any sensitive information.</b> Your unique Slack token which is used for
+        authorization is encrypted and stored in your browser's local storage. You have an option to share your anonymous
+        analysis results with SlackInspector. Only tone scores will be collected. They are used in
+        <a class="link" target="_blank" ui-sref="main.average">average analysis results report</a>.
+    </p>
+
+    <h2>Source Code & Licensing</h2>
+    <p class="content-text-block">
+        <b>SlackInspector</b> is an open-source project made by <a class="link" target="_blank" href="https://github.com/ymukavozchyk">Yauheni Mukavozchyk</a>
+        as a final project for <b>COMP 424 — Client-Side Web Design</b>,
+        <a class="link" target="_blank" href="http://www.luc.edu/">Loyola University Chicago</a>, Fall 2016.
+        Licensed under <a class="link" target="_blank" href="https://github.com/ymukavozchyk/slackinspector/blob/master/LICENSE">MIT License</a>.
+    </p>
+    <p class="content-text-block">
+        <a class="link" target="_blank" href="https://github.com/ymukavozchyk/slackinspector">GitHub Project Page</a>
+    </p>
+</md-content>

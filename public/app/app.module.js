@@ -12,7 +12,6 @@
             'app.main.step1',
             'app.main.step2',
             'app.main.result',
-            'app.main.average',
-            'app.main.about'
+            'app.main.average'
         ]);
 })();
