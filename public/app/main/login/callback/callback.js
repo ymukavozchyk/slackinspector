@@ -31,7 +31,7 @@
         }
 
         function showErrorDialog(errorType, errorMessage) {
-            var errorTitle = 'Error from ' + errorType;
+            var errorTitle = errorType + ' error';
             $mdDialog.show(
                 $mdDialog.alert()
                     .clickOutsideToClose(false)

@@ -119,7 +119,7 @@
                     });
 
                     if (processingErrorFlag === true) {
-                        formErrorMessage('Client', 'Was not able to parse tone analysis data');
+                        formErrorMessage('client', 'Was not able to parse tone analysis data');
                     }
                     else {
                         vm.hideLoader = true;
@@ -139,7 +139,7 @@
         }
 
         vm.showErrorDialog = function () {
-            var errorTitle = 'Error from ' + vm.errorType;
+            var errorTitle = vm.errorType + ' error';
             $mdDialog.show(
                 $mdDialog.alert()
                     .clickOutsideToClose(false)

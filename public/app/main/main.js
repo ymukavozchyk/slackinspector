@@ -20,7 +20,7 @@
         }
 
         function showErrorDialog(type, message) {
-            var errorTitle = 'Error from ' + type;
+            var errorTitle = type + ' error';
             $mdDialog.show(
                 $mdDialog.alert()
                     .clickOutsideToClose(false)

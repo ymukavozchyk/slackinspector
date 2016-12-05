@@ -56,7 +56,7 @@
                     });
 
                     if (processingErrorFlag === true) {
-                        formErrorMessage('Client', 'Was not able to parse usage statistics');
+                        formErrorMessage('client', 'Was not able to parse usage statistics');
                     }
                     else {
                         vm.hideLoader = true;
@@ -76,7 +76,7 @@
         }
 
         vm.showErrorDialog = function () {
-            var errorTitle = 'Error from ' + vm.errorType;
+            var errorTitle = vm.errorType + ' error';
             $mdDialog.show(
                 $mdDialog.alert()
                     .clickOutsideToClose(false)

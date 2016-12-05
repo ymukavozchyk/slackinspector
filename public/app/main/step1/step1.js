@@ -37,7 +37,7 @@
         }
 
         vm.showErrorDialog = function () {
-            var errorTitle = 'Error from ' + vm.errorType;
+            var errorTitle = vm.errorType + ' error';
             $mdDialog.show(
                 $mdDialog.alert()
                     .clickOutsideToClose(false)
