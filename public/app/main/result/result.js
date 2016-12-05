@@ -9,10 +9,17 @@
     function ResultController($mdDialog, $state, ApiService, SharedService, CredentialService) {
         var vm = this;
 
+        var step1Settings;
+        var step2Settings;
+
         vm.hideLoader = false;
         vm.showError = false;
         vm.errorType = '';
         vm.errorMessage = '';
+
+        vm.selectedChannel = '';
+        vm.analysisOptions = 'All messages';
+        vm.messageCount = 0;
 
         vm.languageTones = [];
         vm.emotionTones = [];
@@ -28,14 +35,40 @@
                 $state.go('main.step2');
             }
             else {
+                step1Settings = SharedService.getStep1Settings();
+                step2Settings = SharedService.getStep2Settings();
+
+                vm.selectedChannel = step1Settings.selectedChannelName;
+
+                var dateFormatter = new Date(0);
+
+                if (step2Settings.dateFrom !== null && step2Settings.dateTo !== null) {
+                    dateFormatter.setUTCSeconds(step2Settings.dateFrom);
+                    var dateFromFormatted = dateFormatter.toLocaleDateString();
+
+                    dateFormatter = new Date(0);
+                    dateFormatter.setUTCSeconds(step2Settings.dateTo);
+                    var dateToFormatted = dateFormatter.toLocaleDateString();
+
+                    vm.analysisOptions = 'Messages from ' + dateFromFormatted + ' to ' + dateToFormatted;
+                }
+                else if (step2Settings.dateFrom !== null && step2Settings.dateTo === null) {
+                    dateFormatter.setUTCSeconds(step2Settings.dateFrom);
+                    var dateFromFormatted = dateFormatter.toLocaleDateString();
+                    vm.analysisOptions = 'Messages from ' + dateFromFormatted;
+                }
+                else if(step2Settings.dateFrom === null && step2Settings.dateTo !== null) {
+                    dateFormatter = new Date(0);
+                    dateFormatter.setUTCSeconds(step2Settings.dateTo);
+                    var dateToFormatted = dateFormatter.toLocaleDateString();
+                    vm.analysisOptions = 'Messages up to ' + dateToFormatted;
+                }
+
                 performAnalysis();
             }
         }
 
         function performAnalysis() {
-            var step1Settings = SharedService.getStep1Settings();
-            var step2Settings = SharedService.getStep2Settings();
-
             var params = {
                 encrypted_token: CredentialService.getToken(),
                 save_usage_data: step2Settings.shareData.toString(),
@@ -52,7 +85,7 @@
 
             ApiService.performAnalysis(params)
                 .then(function (res) {
-                    console.log('mcount: ' + res.data.message_count);
+                    vm.messageCount = res.data.message_count;
                     var processingErrorFlag = false;
 
                     res.data.tone.document_tone.tone_categories.forEach(function (toneSection) {

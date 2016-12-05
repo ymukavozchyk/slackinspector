@@ -2,8 +2,19 @@
     <md-progress-circular md-mode="indeterminate" md-diameter="70"></md-progress-circular>
 </div>
 
-<md-content layout="column" layout-align="center center" ng-show="vm.hideLoader && !vm.showError" ng-class="{ flex: vm.hideLoader && !vm.showError }">
-    <h1>Result</h1>
+<md-content class="content-section" layout="column" layout-align="center center" ng-show="vm.hideLoader && !vm.showError"
+    ng-class="{ flex: vm.hideLoader && !vm.showError }">
+    <h1>Tone Analysis</h1>
+
+    <p class="content-text-block text-center">
+        <b>#{{ vm.selectedChannel }}</b>
+        </br><b>{{ vm.analysisOptions }}</b>
+        </br><b>{{ vm.messageCount }} message(s)</b>
+    </p>
+
+    <p class="content-text-block text-center">
+        You can get detailed explanation of tone scores <a class="link" target="_blank" href="https://www.ibm.com/watson/developercloud/doc/tone-analyzer/understanding-tone.shtml">here</a>.
+    </p>
 
     <div layout="row" layout-sm="column" layout-xs="column">
         <md-whiteframe class="md-whiteframe-4dp tone-chart-container emotion-container-spacing">
