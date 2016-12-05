@@ -30,7 +30,7 @@
                 }
             })
             .state('main.callback', {
-                url: '/login/callback?code&state',
+                url: '/login/callback?code', //&state
                 templateUrl: 'app/main/login/callback/callback.html',
                 controller: 'CallbackController',
                 controllerAs: 'vm',
