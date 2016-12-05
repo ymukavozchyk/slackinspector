@@ -54,14 +54,12 @@
                 }
                 else if (step2Settings.dateFrom !== null && step2Settings.dateTo === null) {
                     dateFormatter.setUTCSeconds(step2Settings.dateFrom);
-                    var dateFromFormatted = dateFormatter.toLocaleDateString();
-                    vm.analysisOptions = 'Messages from ' + dateFromFormatted;
+                    vm.analysisOptions = 'Messages from ' + dateFormatter.toLocaleDateString();
                 }
                 else if(step2Settings.dateFrom === null && step2Settings.dateTo !== null) {
                     dateFormatter = new Date(0);
                     dateFormatter.setUTCSeconds(step2Settings.dateTo);
-                    var dateToFormatted = dateFormatter.toLocaleDateString();
-                    vm.analysisOptions = 'Messages up to ' + dateToFormatted;
+                    vm.analysisOptions = 'Messages up to ' + dateFormatter.toLocaleDateString();
                 }
 
                 performAnalysis();

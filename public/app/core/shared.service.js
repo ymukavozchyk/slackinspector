@@ -35,8 +35,7 @@
         return service;
 
         function verifyStep1() {
-            if (step1Settings.selectedChannelId !== undefined
-                && step1Settings.selectedChannelName !== undefined) {
+            if (step1Settings.selectedChannelId !== undefined && step1Settings.selectedChannelName !== undefined) {
                 return true;
             }
             return false;
