@@ -1,4 +1,5 @@
 node_modules/
 public/assets/vendors/
 public/assets/styles/css/
+public/assets/js
 DEV_ENV.bat
