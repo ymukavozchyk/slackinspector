@@ -1,5 +1,5 @@
 .content-section {
-    margin: 30px 0 30px 0;
+    padding: 30px 0 30px 0;
     text-align: justify;
 }
 
@@ -18,5 +18,11 @@
 
     @media (max-width: 960px){
         width: 90%;
+    }
+}
+
+.main-header {
+    @media (max-width: 960px){
+        margin-top: 100px;
     }
 }
