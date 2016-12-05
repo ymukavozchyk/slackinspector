@@ -56,9 +56,10 @@
                 else if (!CredentialService.isStatePresent()) {
                     redirectFlag = true;
                 }
+                /*
                 else if (toParams.state !== CredentialService.getState()) {
                     redirectFlag = true;
-                }
+                }*/
 
                 if (redirectFlag) {
                     preventAndGo('main.step1', event);
