@@ -1,6 +1,10 @@
 # Slack Inspector
 A web application which performs an analysis of messages from specific [Slack](https://slack.com/) channel using [IBM Watson Tone Analyzer](https://www.ibm.com/watson/developercloud/tone-analyzer.html).
 
+#### [Demo](https://slackinspector.herokuapp.com/)
+
+![Sample Analysis Result](https://raw.githubusercontent.com/ymukavozchyk/slackinspector/master/sampleAnalysis.png)
+
 ### Tech Stack
 **Data layer**
 * [MongoDB](https://github.com/mongodb/mongo)
