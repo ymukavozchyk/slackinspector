@@ -1,5 +1,6 @@
 .content-section {
     margin: 30px 0 30px 0;
+    text-align: justify;
 }
 
 .text-center{
@@ -9,7 +10,12 @@
 .content-text-block {
     font-size: 16px;
     line-height: 160%;
-    width: 30%;
+    width: 50%;
+
+    @media (min-width: 1300px){
+        width: 30%;
+    }
+
     @media (max-width: 960px){
         width: 90%;
     }
