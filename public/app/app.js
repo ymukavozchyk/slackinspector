@@ -50,13 +50,13 @@
                 if (CredentialService.isTokenPresent()) {
                     redirectFlag = true;
                 }
+                /*
                 else if (toParams.code === undefined || toParams.state === undefined) {
                     redirectFlag = true;
                 }
                 else if (!CredentialService.isStatePresent()) {
                     redirectFlag = true;
-                }
-                /*
+                }                
                 else if (toParams.state !== CredentialService.getState()) {
                     redirectFlag = true;
                 }*/
