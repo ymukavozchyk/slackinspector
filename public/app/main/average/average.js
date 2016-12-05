@@ -2,11 +2,11 @@
     'use strict';
 
     angular
-        .module('app.main.usage')
-        .controller('UsageController', UsageController);
+        .module('app.main.average')
+        .controller('AverageController', AverageController);
 
-    UsageController.$inject = ['$mdDialog', 'ApiService'];
-    function UsageController($mdDialog, ApiService) {
+    AverageController.$inject = ['$mdDialog', 'ApiService'];
+    function AverageController($mdDialog, ApiService) {
         var vm = this;
 
         vm.hideLoader = false;

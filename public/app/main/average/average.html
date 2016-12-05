@@ -2,8 +2,17 @@
     <md-progress-circular md-mode="indeterminate" md-diameter="70"></md-progress-circular>
 </div>
 
-<md-content layout="column" layout-align="center center" ng-show="vm.hideLoader && !vm.showError" ng-class="{ flex: vm.hideLoader && !vm.showError }">
-    <h1>Result</h1>
+<md-content class="content-section" layout="column" layout-align="center center" ng-show="vm.hideLoader && !vm.showError"
+    ng-class="{ flex: vm.hideLoader && !vm.showError }">
+    <h1>Average Analysis Results</h1>
+
+    <p class="content-text-block text-center">
+        Averages are based on the anonymous tone analysis results which were collected by SlackInspector.
+    </p>
+
+    <p class="content-text-block text-center">
+        You can get detailed explanation of tone scores <a class="link" target="_blank" href="https://www.ibm.com/watson/developercloud/doc/tone-analyzer/understanding-tone.shtml">here</a>.
+    </p>
 
     <div layout="row" layout-sm="column" layout-xs="column">
         <md-whiteframe class="md-whiteframe-4dp tone-chart-container emotion-container-spacing">
@@ -63,7 +72,7 @@
     <div>
         <h3 class="neutral-warning-text">
             <md-icon md-svg-icon="warning"></md-icon>
-            Oops! <a href="javascript:void(0);" class="error-link" ng-click="vm.goToStep2()">Please try again</a>
+            Oops! <a href="javascript:void(0);" class="error-link" ng-click="vm.tryAgain()">Please try again</a>
         </h3>
         <p class="center-text">
             <a href="javascript:void(0);" class="error-link" ng-click="vm.showErrorDialog()">Show error</a>

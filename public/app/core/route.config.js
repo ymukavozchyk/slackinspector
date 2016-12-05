@@ -69,13 +69,13 @@
                     protected: true
                 }
             })
-            .state('main.usage', {
-                url: '/usage',
-                templateUrl: 'app/main/usage/usage.html',
-                controller: 'UsageController',
+            .state('main.average', {
+                url: '/average',
+                templateUrl: 'app/main/average/average.html',
+                controller: 'AverageController',
                 controllerAs: 'vm',
                 data: {
-                    title: 'Usage Statistics',
+                    title: 'Average Results',
                     protected: false
                 }
             })
