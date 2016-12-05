@@ -34,7 +34,7 @@
             else {
                 SharedService.resetStep2();
                 var step1Settings = SharedService.getStep1Settings();
-                vm.selectedChannel += step1Settings.selectedChannelName;
+                vm.selectedChannel = step1Settings.selectedChannelName;
             }
         }
 
