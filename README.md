@@ -1,5 +1,5 @@
 # SlackInspector
-A web application which performs an analysis of messages from specific [Slack](https://slack.com/) channel using [IBM Watson Tone Analyzer](https://www.ibm.com/watson/developercloud/tone-analyzer.html).
+An open-source web application which allows you to perform a linguistic analysis of messages from specific [Slack](https://slack.com/) channel using [IBM Watson Tone Analyzer](https://www.ibm.com/watson/developercloud/tone-analyzer.html).
 
 #### [Demo](https://slackinspector.herokuapp.com/)
 
