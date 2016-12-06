@@ -1,4 +1,4 @@
-'user strict';
+'use strict';
 
 var nodemon;
 var browserSync;
