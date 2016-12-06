@@ -15,9 +15,6 @@
         activate();
 
         function activate() {
-
-            console.log('callback - code: '+ $stateParams.code);
-
             ApiService.login($stateParams.code)
                 .then(function (res) {
                     CredentialService.setToken(res.data.encrypted_token);
