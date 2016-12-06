@@ -48,18 +48,21 @@
                 var redirectFlag = false;
 
                 if (CredentialService.isTokenPresent()) {
+                    console.log('r1');
                     redirectFlag = true;
                 }
-                /*
                 else if (toParams.code === undefined || toParams.state === undefined) {
+                    console.log('r2: ' + toParams.code + ' - ' + toParams.state);
                     redirectFlag = true;
                 }
                 else if (!CredentialService.isStatePresent()) {
+                    console.log('r3');
                     redirectFlag = true;
-                }                
+                }
                 else if (toParams.state !== CredentialService.getState()) {
+                    console.log('r3: ' + toParams.state + ' - ' + CredentialService.getState());
                     redirectFlag = true;
-                }*/
+                }
 
                 if (redirectFlag) {
                     preventAndGo('main.step1', event);
