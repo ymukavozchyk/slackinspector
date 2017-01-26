@@ -11,7 +11,7 @@
         $stateProvider
             .state('main', {
                 url: '/main',
-                templateUrl: 'app/main//main.html',
+                templateUrl: 'app/main/main.html',
                 controller: 'MainController',
                 controllerAs: 'vm',
                 data: {

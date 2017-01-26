@@ -81,7 +81,6 @@ function setupAnalysis(token, channel, saveUsageData, res) {
                         });
                     }
 
-                    //todo perform statistical analysis
                     watson.performAnalysis(saveUsageData, messages, res);
                 }
             });
