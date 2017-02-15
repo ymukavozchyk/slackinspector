@@ -12,6 +12,7 @@
         activate();
 
         function activate() {
+            console.info('app - activate - token present:' + CredentialService.isTokenPresent());
             if (!CredentialService.isTokenPresent()) {
                 $state.go('main.login');
             }
@@ -27,6 +28,7 @@
 
         function checkProtectedRoutes(toState, event) {
             if (toState.data.protected) {
+                console.info('app - protected route - token present:' + CredentialService.isTokenPresent());
                 if (!CredentialService.isTokenPresent()) {
                     preventAndGo('main.login', event);
                 }
