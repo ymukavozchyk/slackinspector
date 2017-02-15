@@ -65,7 +65,7 @@
                 uniqueState = (new Date()).getTime();
                 sessionStorage.setItem('auth.state', uniqueState);
             }
-            return uniqueState;
+            return uniqueState.toString();
         }
 
         function resetState() {
