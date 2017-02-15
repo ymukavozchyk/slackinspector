@@ -21,19 +21,18 @@
             vm.controlsDisabled = true;
 
             ApiService.logout(CredentialService.getToken())
-                .then(function () {
+                .catch(function (e) {
+                    $mdDialog.hide({
+                        type: e.data.error_type,
+                        error: e.data.error
+                    });
+                }).finally(function () {
                     CredentialService.resetToken();
                     $mdDialog.cancel();
                     $rootScope.$broadcast('show-log-out', {
                         value: false
                     });
                     $state.go('main.login');
-                },
-                function (e) {
-                    $mdDialog.hide({
-                        type: e.data.error_type,
-                        error: e.data.error
-                    });
                 });
         };
     }
