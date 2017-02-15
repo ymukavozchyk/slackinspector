@@ -63,6 +63,8 @@
                 }
                 else if (toParams.state !== CredentialService.getState()) {
                     console.info('callback route check - state does not match');
+                    console.info('passed state:' + toParams.state);
+                    console.info('stored state:' + CredentialService.getState());
                     redirectFlag = true;
                 }
 
