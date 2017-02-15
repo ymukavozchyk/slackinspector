@@ -50,15 +50,19 @@
                 var redirectFlag = false;
 
                 if (CredentialService.isTokenPresent()) {
+                    console.info('callback route check - istokenpresent fired');
                     redirectFlag = true;
                 }
                 else if (toParams.code === undefined || toParams.state === undefined) {
+                    console.info('callback route check - code:' + toParams.code + ' state:' + toParams.state);
                     redirectFlag = true;
                 }
                 else if (!CredentialService.isStatePresent()) {
+                    console.info('callback route check - state is not present');
                     redirectFlag = true;
                 }
                 else if (toParams.state !== CredentialService.getState()) {
+                    console.info('callback route check - state does not match');
                     redirectFlag = true;
                 }
 
