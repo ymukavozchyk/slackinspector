@@ -61,7 +61,7 @@
                     console.info('callback route check - state is not present');
                     redirectFlag = true;
                 }
-                else if (toParams.state !== CredentialService.getState()) {
+                else if (toParams.state != CredentialService.getState()) {
                     console.info('callback route check - state does not match');
                     console.info('passed state:' + toParams.state);
                     console.info('stored state:' + CredentialService.getState());
