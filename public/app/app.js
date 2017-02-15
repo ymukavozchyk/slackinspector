@@ -12,7 +12,6 @@
         activate();
 
         function activate() {
-            console.info('app - activate - token present:' + CredentialService.isTokenPresent());
             if (!CredentialService.isTokenPresent()) {
                 $state.go('main.login');
             }
@@ -28,7 +27,6 @@
 
         function checkProtectedRoutes(toState, event) {
             if (toState.data.protected) {
-                console.info('app - protected route - token present:' + CredentialService.isTokenPresent());
                 if (!CredentialService.isTokenPresent()) {
                     preventAndGo('main.login', event);
                 }
@@ -50,25 +48,15 @@
                 var redirectFlag = false;
 
                 if (CredentialService.isTokenPresent()) {
-                    console.info('callback route check - istokenpresent fired');
                     redirectFlag = true;
                 }
                 else if (toParams.code === undefined || toParams.state === undefined) {
-                    console.info('callback route check - code:' + toParams.code + ' state:' + toParams.state);
                     redirectFlag = true;
                 }
                 else if (!CredentialService.isStatePresent()) {
-                    console.info('callback route check - state is not present');
                     redirectFlag = true;
                 }
                 else if (toParams.state !== CredentialService.getState()) {
-                    var state = CredentialService.getState();
-                    console.info('callback route check - state does not match');
-                    console.info('passed state:' + toParams.state);
-                    console.info('stored state:' + state);
-                    console.info(typeof(toParams.state));
-                    console.info(typeof(state));
-
                     redirectFlag = true;
                 }
 

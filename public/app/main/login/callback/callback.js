@@ -15,7 +15,6 @@
         activate();
 
         function activate() {
-            console.info('callback code:' + $stateParams.code);
             ApiService.login($stateParams.code)
                 .then(function (res) {
                     CredentialService.setToken(res.data.encrypted_token);
@@ -26,7 +25,6 @@
                     $state.go('main.step1');
                 },
                 function (e) {
-                    console.info('error in callback');
                     vm.hideLoader = true;
                     showErrorDialog(e.data.error_type, e.data.error);
                 });
